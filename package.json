@@ -1,0 +1,20 @@
+{
+  "name": "openteams-pptx",
+  "version": "1.0.0",
+  "description": "Install the OpenTeams PPTX Generator skill for pi or Claude Code",
+  "bin": {
+    "openteams-pptx": "./bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "openteams-pptx/"
+  ],
+  "keywords": [
+    "openteams",
+    "pptx",
+    "powerpoint",
+    "presentation",
+    "skill"
+  ],
+  "license": "MIT"
+}
