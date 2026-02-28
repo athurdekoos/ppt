@@ -105,7 +105,10 @@ for (const item of itemsToCopy) {
   const src = join(source, item);
   const dest = join(target, item);
   if (!existsSync(src)) continue;
-  cpSync(src, dest, { recursive: true });
+  cpSync(src, dest, {
+    recursive: true,
+    filter: (s) => !s.includes("__pycache__"),
+  });
 }
 
 console.log(`✓ Copied to ${target}`);
