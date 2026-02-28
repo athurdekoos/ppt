@@ -10,3 +10,20 @@ review/slides/*.png
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Environment / secrets
+.env
+.env.*
+.secret*
+
+# Keys / certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Node
+node_modules/
+
+# Logs
+*.log
