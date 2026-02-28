@@ -15,7 +15,7 @@ A pi agent skill that generates modern, on-brand OpenTeams PowerPoint presentati
 - Virtual environment at `/home/mia/.venvs/pptx/`
 - Install dependencies:
   ```bash
-  /home/mia/.venvs/pptx/bin/pip install -r requirements.txt
+  /home/mia/.venvs/pptx/bin/pip install -r ../requirements.txt
   ```
 
 ## Quick Start
@@ -58,10 +58,9 @@ The agent will gather content, build a slide spec, and generate the `.pptx` file
 openteams-pptx/
 ├── SKILL.md                      # Agent skill definition
 ├── README.md                     # This file
-├── requirements.txt              # Python dependencies
 ├── .gitignore
 ├── assets/
-│   └── logos -> /home/mia/dev/ppt/Assets  # Symlink to logo files
+│   └── logos -> ../../Assets              # Symlink to logo files
 ├── references/
 │   ├── brand.json                # Brand tokens (colors, fonts, spacing, logos)
 │   └── slide_types.md            # Slide type catalog and JSON schema

@@ -6,3 +6,7 @@
 
 # Review slide images
 review/slides/*.png
+
+# Python bytecode
+__pycache__/
+*.pyc
