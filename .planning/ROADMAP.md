@@ -9,7 +9,7 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 - [x] **Phase 1: Self-Contained Skill** - Bundle logo PNGs, rewrite paths, eliminate symlinks and hardcoded references
 - [x] **Phase 2: Installer Scripts** - Create install_pi_plugin.sh and install_claude_plugin.sh with prereq checks
 - [x] **Phase 3: Documentation** - Update README, SKILL.md, and CLAUDE.md with install instructions and troubleshooting
-- [ ] **Phase 4: Skill Packager** - Build reusable /skill:skill-packager for scaffolding and packaging any skill
+- [x] **Phase 4: Skill Packager** - Build reusable /skill:skill-packager for scaffolding and packaging any skill
 
 ## Phase Details
 
@@ -60,7 +60,8 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
   3. Packager detects and bundles assets referenced in SKILL.md and scripts
   4. Packager rewrites absolute/symlink paths to portable relative paths
   5. Generated README includes correct install instructions for the skill name
-**Plans**: TBD
+**Plans:** 1 plan
+- [x] 04-01-PLAN.md — Build scaffold.py and package.py with asset detection, symlink resolution, path rewriting
 
 ## Progress
 
@@ -69,4 +70,4 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 | 1. Self-Contained Skill | 1/1 | Complete | 2026-02-28 |
 | 2. Installer Scripts | 1/1 | Complete | 2026-02-28 |
 | 3. Documentation | 1/1 | Complete | 2026-02-28 |
-| 4. Skill Packager | 0/? | Not started | - |
+| 4. Skill Packager | 1/1 | Complete | 2026-02-28 |
