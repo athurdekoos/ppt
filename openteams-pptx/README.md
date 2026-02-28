@@ -44,6 +44,64 @@ Claude regenerates and you get an updated file.
 | "Build a case study presentation for the Global Bank project" | Deck featuring challenge → solution → results layout |
 | "Generate a demo deck showing all slide types" | All 11 slide types with placeholder content |
 
+### Example Conversation
+
+Here's what a full interaction looks like from start to finish:
+
+---
+
+**You:**
+> Create a presentation for a meeting with Capital One about adopting our open source management platform.
+
+**Claude:**
+> Got it — a client pitch deck for Capital One. A few quick questions so I can tailor the deck:
+>
+> 1. **How many slides** are you thinking? A focused 8–10 or a more comprehensive 12–15?
+> 2. **What's the main goal** of this meeting — introductory awareness, a technical deep-dive, or closing a deal?
+> 3. **Any specific numbers or wins** you'd like to highlight? (e.g., cost savings, adoption stats, case studies)
+> 4. **Should I include a team slide** introducing who they'll be working with?
+
+**You:**
+> 10 slides, it's an intro meeting. Highlight our 500+ open source projects managed, 40% cost reduction for clients, and the Global Bank case study. No team slide needed.
+
+**Claude:**
+> Perfect. Here's the deck structure I'll build:
+>
+> | # | Slide Type | Content |
+> |---|-----------|---------|
+> | 1 | `cover` | "Open Source at Scale — A Platform for Capital One" |
+> | 2 | `agenda` | Meeting topics overview |
+> | 3 | `content` | The open source management challenge |
+> | 4 | `content` | OpenTeams platform overview |
+> | 5 | `two_column` | Before vs. After: unmanaged vs. managed open source |
+> | 6 | `metrics` | 500+ projects, 40% cost reduction, 99.9% uptime |
+> | 7 | `case_study` | Global Bank — Challenge → Solution → Results |
+> | 8 | `quote` | Client testimonial |
+> | 9 | `content` | Implementation roadmap & next steps |
+> | 10 | `closing` | CTA: "Schedule a Technical Deep-Dive" |
+>
+> Does this look right, or would you like to adjust any slides?
+
+**You:**
+> Looks great, go ahead.
+
+**Claude:**
+> ✅ Generated: `capital_one_pitch.pptx` (10 slides, 16:9 widescreen)
+>
+> The deck uses Night Navy/Day Blue branding, Inter Tight typography, and the colored OpenTeams logo on light slides with the white logo on the dark quote and closing slides. Ready to open in PowerPoint or upload to Google Slides.
+
+**You:**
+> Can you change the metrics slide to show 4 KPIs instead of 3? Add "200+ enterprise clients".
+
+**Claude:**
+> ✅ Updated: `capital_one_pitch.pptx` — metrics slide now shows 4 KPI cards:
+> - 500+ open source projects
+> - 40% cost reduction
+> - 99.9% uptime
+> - 200+ enterprise clients
+
+---
+
 ### Expected Output
 
 The skill generates a `.pptx` file in the current working directory. Each deck includes:
