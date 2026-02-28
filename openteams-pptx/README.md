@@ -55,6 +55,20 @@ The skill generates a `.pptx` file in the current working directory. Each deck i
 
 The file opens in PowerPoint, Google Slides, LibreOffice Impress, or Keynote.
 
+### Uploading to Google Slides
+
+To use your generated deck in Google Slides:
+
+1. Go to [Google Drive](https://drive.google.com)
+2. Click **New** → **File upload** and select the `.pptx` file
+3. Once uploaded, double-click the file — Drive will show a preview
+4. Click **Open with Google Slides** at the top
+5. Google Slides converts the file automatically, preserving layouts, colors, and text
+
+> **Tip:** To save it permanently as a Google Slides file, go to **File** → **Save as Google Slides** after opening. This lets you collaborate and edit natively without the `.pptx` wrapper.
+
+> **Note:** Custom fonts (Inter Tight) may fall back to Arial in Google Slides if they aren't available in your Google Workspace. To fix this, open the deck, select all text (**Ctrl+A**), and apply Inter Tight from the font menu — Google Slides includes it in its font library.
+
 ### Trigger Phrases
 
 The skill activates when you mention:
