@@ -7,8 +7,8 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 ## Phases
 
 - [x] **Phase 1: Self-Contained Skill** - Bundle logo PNGs, rewrite paths, eliminate symlinks and hardcoded references
-- [ ] **Phase 2: Installer Scripts** - Create install_pi_plugin.sh and install_claude_plugin.sh with prereq checks
-- [ ] **Phase 3: Documentation** - Update README, SKILL.md, and CLAUDE.md with install instructions and troubleshooting
+- [x] **Phase 2: Installer Scripts** - Create install_pi_plugin.sh and install_claude_plugin.sh with prereq checks
+- [x] **Phase 3: Documentation** - Update README, SKILL.md, and CLAUDE.md with install instructions and troubleshooting
 - [ ] **Phase 4: Skill Packager** - Build reusable /skill:skill-packager for scaffolding and packaging any skill
 
 ## Phase Details
@@ -35,7 +35,8 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
   3. Re-running either installer on an existing install works without errors
   4. Running installer without Python 3 installed prints a clear warning
   5. Previous install is backed up before overwriting
-**Plans**: TBD
+**Plans:** 1 plan
+- [x] 02-01-PLAN.md — Create pi and Claude Code installer scripts
 
 ### Phase 3: Documentation
 **Goal**: A new user can install and use the skill by reading the README alone
@@ -46,7 +47,8 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
   2. SKILL.md contains no absolute paths or machine-specific references
   3. CLAUDE.md reflects the installable skill structure
   4. Troubleshooting section covers: missing Python, permission errors, fonts not found
-**Plans**: TBD
+**Plans:** 1 plan
+- [x] 03-01-PLAN.md — Update README, SKILL.md, CLAUDE.md with install docs and troubleshooting
 
 ### Phase 4: Skill Packager
 **Goal**: User can invoke `/skill:skill-packager` to scaffold a new skill or package an existing one with installers
@@ -65,6 +67,6 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Self-Contained Skill | 1/1 | Complete | 2026-02-28 |
-| 2. Installer Scripts | 0/? | Not started | - |
-| 3. Documentation | 0/? | Not started | - |
+| 2. Installer Scripts | 1/1 | Complete | 2026-02-28 |
+| 3. Documentation | 1/1 | Complete | 2026-02-28 |
 | 4. Skill Packager | 0/? | Not started | - |
