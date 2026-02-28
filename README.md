@@ -215,5 +215,5 @@ Generated `.pptx` files work directly in Google Slides:
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://openteams.com">OpenTeams</a> · Quansight</sub>
+  <sub>Built by <a href="https://openteams.com">OpenTeams</a></sub>
 </p>

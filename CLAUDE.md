@@ -35,6 +35,10 @@ Each variant is available in horizontal and vertical lockups, plus favicon.
 
 - **Never** include a `Co-Authored-By` line in commit messages. All commits should be authored solely by the user.
 
+## Attribution
+
+- **Never** reference Quansight in READMEs, footers, or attribution lines. This is an OpenTeams project — credit OpenTeams only.
+
 ## Notes
 
 - The `~$` prefixed file is a temporary Office lock file and should be ignored.
