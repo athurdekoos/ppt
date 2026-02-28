@@ -3,3 +3,6 @@
 
 # Office temp/lock files
 ~$*
+
+# Review slide images
+review/slides/*.png
