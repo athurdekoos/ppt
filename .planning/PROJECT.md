@@ -1,12 +1,12 @@
-# OpenTeams PPTX Skill — Installer & Packaging
+# OpenTeams PPTX Skill — Installer & Skill Factory
 
 ## What This Is
 
-A packaging project that makes the OpenTeams PPTX Generator skill installable via one-click shell scripts for both pi coding agent and Claude Code. The skill generates brand-compliant OpenTeams PowerPoint presentations from natural language. Target audience is OpenTeams team members.
+Two-part project: (1) Package the OpenTeams PPTX Generator skill as one-click installable for pi coding agent and Claude Code, targeted at OpenTeams team members. (2) Build a reusable local skill ("skill-packager") that can scaffold new skills from scratch and package any skill directory into self-contained installable form — so this process can be repeated for future skills.
 
 ## Core Value
 
-Anyone at OpenTeams can run a single shell script and immediately have the `/skill:openteams-pptx` command available in their agent — no manual copying, no path fixups, no symlink wrangling.
+A repeatable, one-command workflow for building and distributing agent skills — starting with the OpenTeams PPTX skill as the first proof case.
 
 ## Requirements
 
@@ -16,14 +16,23 @@ Anyone at OpenTeams can run a single shell script and immediately have the `/ski
 
 ### Active
 
-- [ ] `install_pi_plugin.sh` — one-click installer that copies the skill to `~/.pi/agent/skills/openteams-pptx/`
-- [ ] `install_claude_plugin.sh` — one-click installer that installs the skill for Claude Code
+**Part 1 — OpenTeams PPTX Skill Packaging:**
 - [ ] Self-contained skill directory — 6 PNG logo files bundled directly (no symlink to `../../Assets`)
 - [ ] `brand.json` logo paths updated to reference bundled PNGs
-- [ ] README.md updated with install instructions for both agents
-- [ ] Documentation files updated to reflect the installable packaging
+- [ ] `install_pi_plugin.sh` — one-click installer that copies the skill to `~/.pi/agent/skills/openteams-pptx/`
+- [ ] `install_claude_plugin.sh` — one-click installer that installs the skill for Claude Code
 - [ ] Installers handle Python dependency check/warning (but don't create venvs)
 - [ ] Installers are idempotent (safe to re-run)
+- [ ] README.md updated with install instructions for both agents
+- [ ] Documentation files updated to reflect the installable packaging
+
+**Part 2 — Reusable Skill Packager:**
+- [ ] Local skill (`/skill:skill-packager`) that can scaffold a new pi/Claude Code skill from scratch
+- [ ] Skill packager can take any existing skill directory and generate install scripts
+- [ ] Bundles referenced assets (images, data files) into self-contained directory
+- [ ] Rewrites paths (symlinks, absolute refs) to be portable
+- [ ] Generates `install_pi_plugin.sh` and `install_claude_plugin.sh` for any skill
+- [ ] Updates/generates README with install instructions
 
 ### Out of Scope
 
@@ -32,6 +41,7 @@ Anyone at OpenTeams can run a single shell script and immediately have the `/ski
 - Windows / PowerShell installer — Linux/macOS `.sh` only
 - Bundling the full Assets directory (AI, SVG, JPG variants) — only the 6 PNGs the code uses
 - Publishing to a package registry
+- Skill packager as a hosted/cloud service — local only
 
 ## Context
 
@@ -56,6 +66,8 @@ Anyone at OpenTeams can run a single shell script and immediately have the `/ski
 | Bundle 6 PNGs instead of symlink | Makes skill self-contained, works anywhere | — Pending |
 | Two separate installer scripts | Pi and Claude Code have different skill directories/conventions | — Pending |
 | Don't manage Python venvs | Users have varying Python setups; installer stays simple | — Pending |
+| Build reusable skill-packager as a pi skill | Dogfood the process — use agent skills to build agent skills | — Pending |
+| Part 1 first, then Part 2 | Prove the pattern with PPTX skill before generalizing | — Pending |
 
 ---
 *Last updated: 2026-02-28 after initialization*
