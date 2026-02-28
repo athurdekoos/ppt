@@ -69,8 +69,7 @@ ppt/
 │   ├── README.md                          # Skill documentation
 │   ├── SKILL.md                           # Pi agent skill definition
 │   ├── docs/
-│   │   ├── ARCHITECTURE.md                # System design & data flow
-│   │   └── CONTRIBUTING.md                # How to add slide types
+│   │   └── ARCHITECTURE.md                # System design & data flow
 │   ├── references/
 │   │   ├── brand.json                     # Brand tokens
 │   │   └── slide_types.md                 # Slide type catalog & schema
@@ -102,6 +101,20 @@ python -m venv ~/.venvs/pptx
   --brand openteams-pptx/references/brand.json \
   --out demo.pptx
 ```
+
+### Uploading to Google Slides
+
+Generated `.pptx` files work directly in Google Slides:
+
+1. Go to [Google Drive](https://drive.google.com)
+2. Click **New** → **File upload** and select the `.pptx` file
+3. Once uploaded, double-click the file — Drive will show a preview
+4. Click **Open with Google Slides** at the top
+5. Google Slides converts the file automatically, preserving layouts, colors, and text
+
+> **Tip:** Go to **File** → **Save as Google Slides** to save it natively for collaboration.
+
+> **Note:** Custom fonts (Inter Tight) may fall back to Arial in Google Slides. To fix this, select all text (**Ctrl+A**) and apply Inter Tight from the font menu — Google Slides includes it in its font library.
 
 ### For Logo Assets
 
