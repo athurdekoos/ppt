@@ -1,0 +1,8 @@
+# Brand assets (large binary files)
+Assests/
+
+# macOS
+.DS_Store
+
+# Office temp/lock files
+~$*
