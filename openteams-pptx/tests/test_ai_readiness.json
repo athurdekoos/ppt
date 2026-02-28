@@ -1,0 +1,13 @@
+{
+  "title": "AI Readiness Assessment",
+  "slides": [
+    {"type": "cover", "title": "AI Readiness Assessment", "subtitle": "Helping enterprises prepare for AI adoption", "date": "February 2026"},
+    {"type": "agenda", "items": ["Current State Analysis", "AI Maturity Model", "Gap Assessment", "Recommended Roadmap", "Investment Overview"]},
+    {"type": "content", "title": "Why AI Readiness Matters", "body": "Organizations that invest in AI readiness see 3x faster time-to-value.\n\nWithout proper preparation, 85% of AI initiatives fail to reach production.", "image_placeholder": "AI adoption curve chart"},
+    {"type": "two_column", "title": "Assessment Framework", "left_title": "Technical Readiness", "left_body": "Data infrastructure\nML pipeline maturity\nCompute & tooling\nSecurity posture", "right_title": "Organizational Readiness", "right_body": "Talent & skills gap\nChange management\nGovernance framework\nBudget alignment"},
+    {"type": "metrics", "title": "Your Readiness Scores", "metrics": [{"value": "72%", "label": "Data Readiness"}, {"value": "45%", "label": "Infra Maturity"}, {"value": "88%", "label": "Team Alignment"}, {"value": "60%", "label": "Governance"}]},
+    {"type": "quote", "text": "The best time to prepare for AI was yesterday.\nThe second best time is now.", "attribution": "OpenTeams Advisory"},
+    {"type": "case_study", "title": "Case Study: Fortune 500 Biotech", "challenge": "Scattered ML workflows across 12 teams with no shared infrastructure.", "solution": "OpenTeams deployed Nebari as a unified ML platform with SSO and RBAC.", "results": "70% reduction in experiment-to-production time. $2.4M annual savings."},
+    {"type": "closing", "title": "Let's Build Your AI Future", "subtitle": "Ready to get started?", "contact": "ai@openteams.com  |  openteams.com/ai-readiness-assessment"}
+  ]
+}
