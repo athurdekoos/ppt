@@ -95,7 +95,7 @@ Softer guidelines derived from openteams.com — follow these for visual consist
 - **Buttons:** Pill-shaped (fully rounded), Day Blue fill, white text
 - **Cards:** Shadow-based elevation, no visible borders, 12pt corner radius
 - **Whitespace:** Generous — 0.6" margins, 0.35" gutters
-- **Decorative elements:** Translucent accent dots (circles) in yellow/salmon/blue at ~15–30% opacity
+- **Decorative elements:** Translucent accent dots (circles) in yellow/salmon/blue at ~15–30% opacity — **never on the cover slide gradient panel** (they look like gray blobs next to the favicon)
 - **Image placeholders:** Rounded corners, light blue (#E8EDFB) fill
 - **Overall aesthetic:** Clean, minimal, white-dominant — avoid clutter
 
