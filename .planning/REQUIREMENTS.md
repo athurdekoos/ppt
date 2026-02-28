@@ -64,27 +64,27 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ASSET-01 | Phase 1 | Pending |
-| ASSET-02 | Phase 1 | Pending |
-| ASSET-03 | Phase 1 | Pending |
-| ASSET-04 | Phase 1 | Pending |
-| ASSET-05 | Phase 4 | Pending |
-| INST-01 | Phase 2 | Pending |
-| INST-02 | Phase 2 | Pending |
-| INST-03 | Phase 2 | Pending |
-| INST-04 | Phase 2 | Pending |
-| INST-05 | Phase 2 | Pending |
-| INST-06 | Phase 2 | Pending |
-| DOCS-01 | Phase 3 | Pending |
-| DOCS-02 | Phase 3 | Pending |
-| DOCS-03 | Phase 3 | Pending |
-| DOCS-04 | Phase 3 | Pending |
-| PACK-01 | Phase 4 | Pending |
-| PACK-02 | Phase 4 | Pending |
-| PACK-03 | Phase 4 | Pending |
-| PACK-04 | Phase 4 | Pending |
-| PACK-05 | Phase 4 | Pending |
-| PACK-06 | Phase 4 | Pending |
+| ASSET-01 | Phase 1: Self-Contained Skill | Pending |
+| ASSET-02 | Phase 1: Self-Contained Skill | Pending |
+| ASSET-03 | Phase 1: Self-Contained Skill | Pending |
+| ASSET-04 | Phase 1: Self-Contained Skill | Pending |
+| ASSET-05 | Phase 4: Skill Packager | Pending |
+| INST-01 | Phase 2: Installer Scripts | Pending |
+| INST-02 | Phase 2: Installer Scripts | Pending |
+| INST-03 | Phase 2: Installer Scripts | Pending |
+| INST-04 | Phase 2: Installer Scripts | Pending |
+| INST-05 | Phase 2: Installer Scripts | Pending |
+| INST-06 | Phase 2: Installer Scripts | Pending |
+| DOCS-01 | Phase 3: Documentation | Pending |
+| DOCS-02 | Phase 3: Documentation | Pending |
+| DOCS-03 | Phase 3: Documentation | Pending |
+| DOCS-04 | Phase 3: Documentation | Pending |
+| PACK-01 | Phase 4: Skill Packager | Pending |
+| PACK-02 | Phase 4: Skill Packager | Pending |
+| PACK-03 | Phase 4: Skill Packager | Pending |
+| PACK-04 | Phase 4: Skill Packager | Pending |
+| PACK-05 | Phase 4: Skill Packager | Pending |
+| PACK-06 | Phase 4: Skill Packager | Pending |
 
 **Coverage:**
 - v1 requirements: 21 total
