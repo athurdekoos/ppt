@@ -9,7 +9,7 @@ This is an OpenTeams brand assets and presentation tooling repository containing
 - **OpenTeams_Brand_Guidelines_2025.pdf** — Official brand guidelines document (36 MB)
 - **Assets/** — Logo files in multiple formats and variants
 - **build_template.py** — Legacy PowerPoint template builder script
-- **openteams-pptx/** — Modular PPTX generation skill (scripts, brand config, references)
+- **openteams-pptx/** — Self-contained, installable PPTX generation skill (scripts, brand config, bundled logos)
 - **review/** — Brand compliance audit outputs (mock deck, report)
 
 ## Logo Organization
@@ -38,4 +38,6 @@ Each variant is available in horizontal and vertical lockups, plus favicon.
 ## Notes
 
 - The `~$` prefixed file is a temporary Office lock file and should be ignored.
-- `openteams-pptx/assets/logos` is a symlink to `../../Assets`.
+- `openteams-pptx/assets/logos/` contains 6 bundled PNG logo files (no longer a symlink).
+- `openteams-pptx/install_pi_plugin.sh` installs the skill for pi.
+- `openteams-pptx/install_claude_plugin.sh` installs the skill for Claude Code.

@@ -76,23 +76,39 @@ The skill activates when you mention:
 - "slides", "deck", "presentation template"
 - Creating content for clients, partners, or stakeholders
 
-## Quick Start (Manual CLI)
+## Installation
+
+### For pi (coding agent)
+
+```bash
+./install_pi_plugin.sh
+```
+
+The skill becomes available as `/skill:openteams-pptx` in any pi session.
+
+### For Claude Code
+
+```bash
+./install_claude_plugin.sh
+```
+
+The skill is installed to `~/.agents/skills/openteams-pptx/`.
 
 ### Prerequisites
 
-- Python 3.11+
-- Virtual environment with dependencies:
+- **Python 3.11+** with `python-pptx` installed:
+  ```bash
+  pip3 install python-pptx
+  ```
+- The installers check for prerequisites and warn if anything is missing.
 
-```bash
-python -m venv ~/.venvs/pptx
-~/.venvs/pptx/bin/pip install -r requirements.txt
-```
+## Quick Start (Manual CLI)
 
 ### Generate a Deck
 
 **From a slide spec JSON:**
 ```bash
-~/.venvs/pptx/bin/python scripts/generate_deck.py \
+python3 scripts/generate_deck.py \
   --spec slides.json \
   --brand references/brand.json \
   --out output.pptx
@@ -100,7 +116,7 @@ python -m venv ~/.venvs/pptx
 
 **Demo deck (all slide types with placeholder content):**
 ```bash
-~/.venvs/pptx/bin/python scripts/generate_deck.py \
+python3 scripts/generate_deck.py \
   --demo \
   --brand references/brand.json \
   --out demo.pptx
@@ -109,7 +125,7 @@ python -m venv ~/.venvs/pptx
 **Pipe JSON from stdin:**
 ```bash
 echo '{"slides":[{"type":"cover","title":"Hello"}]}' | \
-  ~/.venvs/pptx/bin/python scripts/generate_deck.py \
+  python3 scripts/generate_deck.py \
   --brand references/brand.json \
   --out quick.pptx
 ```
@@ -163,11 +179,21 @@ These rules are enforced automatically and come from the [OpenTeams 2025 Brand G
 | **Gradients** | Night Navy → Day Blue for cover and closing slides only |
 | **Cover slide** | No decorative dots on the gradient panel |
 
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| **`python3: command not found`** | Install Python 3: `sudo apt install python3` (Ubuntu/Debian) or `brew install python3` (macOS) |
+| **`ModuleNotFoundError: No module named 'pptx'`** | Install python-pptx: `pip3 install python-pptx` |
+| **Permission denied running installer** | Make it executable: `chmod +x install_pi_plugin.sh` |
+| **Fonts look wrong (Arial instead of Inter Tight)** | Install Inter Tight font system-wide, or accept Arial fallback. In Google Slides, select all text and apply Inter Tight from the font menu. |
+| **Logo not appearing on slides** | Verify `assets/logos/` contains 6 PNG files. Run `ls assets/logos/*.png` to check. |
+
 ## Running Tests
 
 ```bash
-~/.venvs/pptx/bin/pip install pytest
-~/.venvs/pptx/bin/python -m pytest tests/ -v
+pip3 install pytest
+python3 -m pytest tests/ -v
 ```
 
 Tests cover color utilities, spec validation, and smoke-test generation for all slide types.
@@ -179,7 +205,7 @@ openteams-pptx/
 ├── SKILL.md                       # Pi agent skill definition
 ├── README.md                      # This file
 ├── assets/
-│   └── logos -> ../../Assets      # Symlink to logo files
+│   └── logos/                     # Bundled logo PNGs (6 files)
 ├── references/
 │   ├── brand.json                 # Brand tokens (colors, fonts, spacing, logos)
 │   └── slide_types.md             # Slide type catalog and JSON schema
@@ -200,7 +226,7 @@ openteams-pptx/
 If the OpenTeams website has been updated, refresh the visual cues in `brand.json`:
 
 ```bash
-~/.venvs/pptx/bin/python scripts/refresh_site_style.py \
+python3 scripts/refresh_site_style.py \
   --url https://openteams.com/ \
   --brand-json references/brand.json
 ```
