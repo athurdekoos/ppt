@@ -6,7 +6,7 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 
 ## Phases
 
-- [ ] **Phase 1: Self-Contained Skill** - Bundle logo PNGs, rewrite paths, eliminate symlinks and hardcoded references
+- [x] **Phase 1: Self-Contained Skill** - Bundle logo PNGs, rewrite paths, eliminate symlinks and hardcoded references
 - [ ] **Phase 2: Installer Scripts** - Create install_pi_plugin.sh and install_claude_plugin.sh with prereq checks
 - [ ] **Phase 3: Documentation** - Update README, SKILL.md, and CLAUDE.md with install instructions and troubleshooting
 - [ ] **Phase 4: Skill Packager** - Build reusable /skill:skill-packager for scaffolding and packaging any skill
@@ -23,7 +23,7 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
   3. No file in the skill directory contains `/home/mia/` or other absolute paths
   4. `generate_deck.py --demo` produces a valid .pptx when run from the skill directory with `python3`
 **Plans:** 1 plan
-- [ ] 01-01-PLAN.md — Bundle logos, fix paths, verify portability
+- [x] 01-01-PLAN.md — Bundle logos, fix paths, verify portability
 
 ### Phase 2: Installer Scripts
 **Goal**: OpenTeams team members can run one shell script to install the skill for their agent
@@ -64,7 +64,7 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Self-Contained Skill | 0/? | Not started | - |
+| 1. Self-Contained Skill | 1/1 | Complete | 2026-02-28 |
 | 2. Installer Scripts | 0/? | Not started | - |
 | 3. Documentation | 0/? | Not started | - |
 | 4. Skill Packager | 0/? | Not started | - |
