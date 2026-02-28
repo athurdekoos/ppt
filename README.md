@@ -75,6 +75,21 @@ Ask Claude to create a deck and it handles content structure, slide layout, bran
 
 **11 slide types:** cover · section divider · agenda · content · two-column · quote · metrics · team · case study · closing · blank
 
+<details>
+<summary>🐱 <strong>Example: "Why Cats Should Run Your Standups"</strong> — click to watch</summary>
+<br>
+<p align="center">
+  <img src="docs/example-cat-standups.gif" alt="Example deck: Why Cats Should Run Your Standups" width="720">
+</p>
+
+> **Prompt:** *"Make me a funny presentation about why cats would be better scrum masters than humans. Include metrics, a case study, and a roadmap."*
+>
+> The generator picked the right slide types automatically — cover, agenda, section divider,
+> two-column comparison, bullet content, metrics dashboard, quote, case study, and closing —
+> then rendered everything on-brand in seconds.
+
+</details>
+
 See [`openteams-pptx/README.md`](openteams-pptx/README.md) for full usage, slide types, and CLI docs.
 
 ### Install
