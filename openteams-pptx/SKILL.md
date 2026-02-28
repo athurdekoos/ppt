@@ -56,7 +56,7 @@ Save the spec to a temporary JSON file (e.g., `/tmp/deck_spec.json`).
 Run the generation script. Let `<skill-dir>` be the directory containing this SKILL.md:
 
 ```bash
-/home/mia/.venvs/pptx/bin/python <skill-dir>/scripts/generate_deck.py \
+python3 <skill-dir>/scripts/generate_deck.py \
   --spec /tmp/deck_spec.json \
   --brand <skill-dir>/references/brand.json \
   --out <output-path>.pptx
@@ -121,7 +121,7 @@ See `references/slide_types.md` for the complete catalog of all 11 slide types:
 
 **Generate from spec:**
 ```bash
-/home/mia/.venvs/pptx/bin/python <skill-dir>/scripts/generate_deck.py \
+python3 <skill-dir>/scripts/generate_deck.py \
   --spec <spec-file>.json \
   --brand <skill-dir>/references/brand.json \
   --out <output-path>.pptx
@@ -129,7 +129,7 @@ See `references/slide_types.md` for the complete catalog of all 11 slide types:
 
 **Generate demo (all slide types with placeholder content):**
 ```bash
-/home/mia/.venvs/pptx/bin/python <skill-dir>/scripts/generate_deck.py \
+python3 <skill-dir>/scripts/generate_deck.py \
   --demo \
   --brand <skill-dir>/references/brand.json \
   --out <output-path>.pptx
@@ -137,19 +137,19 @@ See `references/slide_types.md` for the complete catalog of all 11 slide types:
 
 **Pipe JSON from stdin:**
 ```bash
-echo '{"slides":[...]}' | /home/mia/.venvs/pptx/bin/python <skill-dir>/scripts/generate_deck.py \
+echo '{"slides":[...]}' | python3 <skill-dir>/scripts/generate_deck.py \
   --brand <skill-dir>/references/brand.json \
   --out <output-path>.pptx
 ```
 
-Where `<skill-dir>` = the directory containing this SKILL.md (e.g., `/home/mia/dev/ppt/openteams-pptx`).
+Where `<skill-dir>` = the directory containing this SKILL.md (the absolute path to this skill's directory).
 
 ## Refreshing Website Styles
 
 If the user mentions the OpenTeams website was recently updated, refresh the visual cues:
 
 ```bash
-/home/mia/.venvs/pptx/bin/python <skill-dir>/scripts/refresh_site_style.py \
+python3 <skill-dir>/scripts/refresh_site_style.py \
   --url https://openteams.com/ \
   --brand-json <skill-dir>/references/brand.json
 ```

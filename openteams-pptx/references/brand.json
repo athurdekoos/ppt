@@ -74,12 +74,12 @@
     "dont_distort":         true
   },
   "logo_assets": {
-    "colored_horizontal_png": "assets/logos/OT_Colored_Logos/Colored-Horizontal-transparent-logo/OT-new-logo-final.png",
-    "colored_vertical_png":   "assets/logos/OT_Colored_Logos/Colored-vertical-transparent-logo/OT-new-logo-vertical-lockup.png",
-    "white_horizontal_png":   "assets/logos/OT_White_Logos/White-Horizontal-transparent-logo/OT-new-logo-final-white-horizontal-lockup.png",
-    "black_horizontal_png":   "assets/logos/OT_Black_Logos/Black-Horizontal-transparent/OpenTeams_logo_horizontal_lockup_black.png",
-    "favicon_colored_png":    "assets/logos/OT_Colored_Logos/Favicon-transparent-background/OpenTeams-favicon-01.png",
-    "favicon_white_png":      "assets/logos/OT_White_Logos/White-Horizontal-transparent-logo/OT-new-logo-final-white-favicon.png"
+    "colored_horizontal_png": "assets/logos/logo-colored-horizontal.png",
+    "colored_vertical_png":   "assets/logos/logo-colored-vertical.png",
+    "white_horizontal_png":   "assets/logos/logo-white-horizontal.png",
+    "black_horizontal_png":   "assets/logos/logo-black-horizontal.png",
+    "favicon_colored_png":    "assets/logos/favicon-colored.png",
+    "favicon_white_png":      "assets/logos/favicon-white.png"
   },
   "website_cues": {
     "hero_style":       "large headline left-aligned, illustration/image right, white or light gradient bg",
