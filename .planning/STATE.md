@@ -11,12 +11,13 @@ See: .planning/PROJECT.md (updated 2026-02-28)
 
 - **Milestone:** v2.0
 - **Phase:** 1 of 2
-- **Plan:** Not yet planned
-- **Status:** Not started
+- **Plan:** 01-01 complete
+- **Status:** Executing — plan 01-01 complete, awaiting verification
 
 ## Decisions
 
-_(none yet)_
+- Used fs.cpSync filter callback to exclude __pycache__ during copy
+- Used ES modules (.mjs) for modern Node.js compatibility
 
 ## Blockers
 
