@@ -1,96 +1,95 @@
-# Requirements: OpenTeams PPTX Skill — Installer & Skill Factory
+# Requirements: OpenTeams PPTX Skill — npx Installer
 
 **Defined:** 2026-02-28
-**Core Value:** A repeatable, one-command workflow for building and distributing agent skills
+**Core Value:** One npx command installs the skill for any supported agent
 
 ## v1 Requirements
 
-### Asset Bundling
+### NPX CLI
 
-- [ ] **ASSET-01**: Skill directory contains 6 PNG logo files directly (no symlink)
-- [ ] **ASSET-02**: brand.json logo_assets paths reference bundled PNGs in assets/logos/
-- [ ] **ASSET-03**: All hardcoded absolute paths removed from scripts and SKILL.md (no `/home/mia/` references)
-- [ ] **ASSET-04**: Scripts use `python3` and relative paths, not hardcoded venv paths
-- [ ] **ASSET-05**: Auto-detect referenced assets by parsing code and config files
+- [ ] **CLI-01**: `npx https://github.com/athurdekoos/ppt --pi` installs skill to `~/.pi/agent/skills/openteams-pptx/`
+- [ ] **CLI-02**: `npx https://github.com/athurdekoos/ppt --claude` installs skill to `~/.agents/skills/openteams-pptx/`
+- [ ] **CLI-03**: Running with no flag or invalid flag prints usage help with both commands
+- [ ] **CLI-04**: CLI prints clear progress messages (checking prereqs → backing up → copying → done)
 
-### Installers
+### Prerequisites
 
-- [ ] **INST-01**: `install_pi_plugin.sh` copies skill to `~/.pi/agent/skills/openteams-pptx/` and skill is discoverable as `/skill:openteams-pptx`
-- [ ] **INST-02**: `install_claude_plugin.sh` installs skill for Claude Code with proper command file format
-- [ ] **INST-03**: Installers are idempotent — safe to re-run without breaking existing install
-- [ ] **INST-04**: Installers check for Python 3 and pip, print clear warnings if missing
-- [ ] **INST-05**: Installers back up existing install before overwriting
-- [ ] **INST-06**: Uninstall guidance printed after successful install (how to remove)
+- [ ] **PREREQ-01**: Installer checks for Python 3 and exits with clear message if missing
+- [ ] **PREREQ-02**: Installer checks for python-pptx and runs `pip3 install python-pptx` if missing
+- [ ] **PREREQ-03**: If pip install fails, print manual install instructions and continue
+
+### Install Behavior
+
+- [ ] **INST-01**: Existing install is backed up to `<target>.backup.<timestamp>` before overwriting
+- [ ] **INST-02**: Installer is idempotent — safe to re-run without errors
+- [ ] **INST-03**: Only skill files are copied (SKILL.md, README.md, scripts/, references/, assets/, docs/) — no tests, no .planning, no .git
+- [ ] **INST-04**: Prints uninstall instructions after successful install
+
+### Cleanup
+
+- [ ] **CLEAN-01**: `install_pi_plugin.sh` deleted from repo
+- [ ] **CLEAN-02**: `install_claude_plugin.sh` deleted from repo
+- [ ] **CLEAN-03**: All references to .sh installers removed from README, SKILL.md, CLAUDE.md
+
+### Package Setup
+
+- [ ] **PKG-01**: `package.json` at repo root with `bin` field pointing to CLI entry script
+- [ ] **PKG-02**: CLI entry script is a Node.js file with `#!/usr/bin/env node` shebang
+- [ ] **PKG-03**: No external npm dependencies — uses only Node.js built-ins (fs, path, child_process)
 
 ### Documentation
 
-- [ ] **DOCS-01**: README.md includes install instructions for both pi and Claude Code
-- [ ] **DOCS-02**: SKILL.md updated with portable paths (no absolute references)
-- [ ] **DOCS-03**: CLAUDE.md updated to reflect new installable structure
-- [ ] **DOCS-04**: README includes troubleshooting section for common issues
-
-### Skill Packager
-
-- [ ] **PACK-01**: `/skill:skill-packager` can scaffold a new skill directory with SKILL.md, README, and directory structure
-- [ ] **PACK-02**: Skill packager can generate `install_pi_plugin.sh` and `install_claude_plugin.sh` for any skill directory
-- [ ] **PACK-03**: Skill packager bundles referenced assets into self-contained directory
-- [ ] **PACK-04**: Skill packager auto-detects assets by parsing SKILL.md and script files for file references
-- [ ] **PACK-05**: Skill packager rewrites absolute and symlink paths to portable relative paths
-- [ ] **PACK-06**: Skill packager generates/updates README install section with correct skill name and paths
+- [ ] **DOCS-01**: README updated with npx install commands replacing .sh instructions
+- [ ] **DOCS-02**: README Installation section shows both --pi and --claude examples
+- [ ] **DOCS-03**: CLAUDE.md updated to reference npx install method
 
 ## v2 Requirements
 
 ### Distribution
 
-- **DIST-01**: Version tracking for installed skills
-- **DIST-02**: Update-in-place command to pull latest version
-
-### Cross-Platform
-
-- **XPLAT-01**: PowerShell installer for Windows
-- **XPLAT-02**: Fish/zsh shell compatibility testing
+- **DIST-01**: Publish to npm for shorter command: `npx @openteams/pptx --pi`
+- **DIST-02**: Version tracking for installed skills
 
 ## Out of Scope
 
 | Feature | Reason |
 |---------|--------|
-| Python venv management | Too many edge cases across systems; users manage their own |
-| Package registry publishing | Over-engineering for internal OpenTeams audience |
-| Auto-update mechanism | Security concerns, complexity — manual re-run is fine |
-| Cloud/hosted skill packager | Local-only tool, no server needed |
-| Windows .bat/.ps1 installer | Linux/macOS only for v1 |
+| npm registry publishing | GitHub URL is sufficient for now |
+| Windows/PowerShell | Linux/macOS only for v1 |
+| Auto-update mechanism | Manual re-run of npx is fine |
+| Skill packager | Separate future milestone |
+| Python venv management | Users manage their own environments |
 
 ## Traceability
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ASSET-01 | Phase 1: Self-Contained Skill | Pending |
-| ASSET-02 | Phase 1: Self-Contained Skill | Pending |
-| ASSET-03 | Phase 1: Self-Contained Skill | Pending |
-| ASSET-04 | Phase 1: Self-Contained Skill | Pending |
-| ASSET-05 | Phase 4: Skill Packager | Pending |
-| INST-01 | Phase 2: Installer Scripts | Pending |
-| INST-02 | Phase 2: Installer Scripts | Pending |
-| INST-03 | Phase 2: Installer Scripts | Pending |
-| INST-04 | Phase 2: Installer Scripts | Pending |
-| INST-05 | Phase 2: Installer Scripts | Pending |
-| INST-06 | Phase 2: Installer Scripts | Pending |
-| DOCS-01 | Phase 3: Documentation | Pending |
-| DOCS-02 | Phase 3: Documentation | Pending |
-| DOCS-03 | Phase 3: Documentation | Pending |
-| DOCS-04 | Phase 3: Documentation | Pending |
-| PACK-01 | Phase 4: Skill Packager | Pending |
-| PACK-02 | Phase 4: Skill Packager | Pending |
-| PACK-03 | Phase 4: Skill Packager | Pending |
-| PACK-04 | Phase 4: Skill Packager | Pending |
-| PACK-05 | Phase 4: Skill Packager | Pending |
-| PACK-06 | Phase 4: Skill Packager | Pending |
+| CLI-01 | Phase 1 | Pending |
+| CLI-02 | Phase 1 | Pending |
+| CLI-03 | Phase 1 | Pending |
+| CLI-04 | Phase 1 | Pending |
+| PREREQ-01 | Phase 1 | Pending |
+| PREREQ-02 | Phase 1 | Pending |
+| PREREQ-03 | Phase 1 | Pending |
+| INST-01 | Phase 1 | Pending |
+| INST-02 | Phase 1 | Pending |
+| INST-03 | Phase 1 | Pending |
+| INST-04 | Phase 1 | Pending |
+| PKG-01 | Phase 1 | Pending |
+| PKG-02 | Phase 1 | Pending |
+| PKG-03 | Phase 1 | Pending |
+| CLEAN-01 | Phase 2 | Pending |
+| CLEAN-02 | Phase 2 | Pending |
+| CLEAN-03 | Phase 2 | Pending |
+| DOCS-01 | Phase 2 | Pending |
+| DOCS-02 | Phase 2 | Pending |
+| DOCS-03 | Phase 2 | Pending |
 
 **Coverage:**
-- v1 requirements: 21 total
-- Mapped to phases: 21
+- v1 requirements: 20 total
+- Mapped to phases: 20
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-28*
-*Last updated: 2026-02-28 after initial definition*
+*Last updated: 2026-02-28 after v2.0 initialization*

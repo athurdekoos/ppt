@@ -1,73 +1,68 @@
-# OpenTeams PPTX Skill — Installer & Skill Factory
+# OpenTeams PPTX Skill — npx Installer
 
 ## What This Is
 
-Two-part project: (1) Package the OpenTeams PPTX Generator skill as one-click installable for pi coding agent and Claude Code, targeted at OpenTeams team members. (2) Build a reusable local skill ("skill-packager") that can scaffold new skills from scratch and package any skill directory into self-contained installable form — so this process can be repeated for future skills.
+Replace the shell-script installers (`install_pi_plugin.sh`, `install_claude_plugin.sh`) with a single `npx`-based installer for the OpenTeams PPTX Generator skill. Users run one command to install the skill for either pi or Claude Code — no cloning, no manual file copying.
 
 ## Core Value
 
-A repeatable, one-command workflow for building and distributing agent skills — starting with the OpenTeams PPTX skill as the first proof case.
+One `npx` command installs the skill for any supported agent — zero manual steps.
 
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Self-contained skill directory — 6 PNG logos bundled, no symlinks — Phase 1 v1.0
+- ✓ brand.json logo paths reference bundled PNGs — Phase 1 v1.0
+- ✓ All hardcoded absolute paths removed — Phase 1 v1.0
+- ✓ Scripts use python3 and relative paths — Phase 1 v1.0
+- ✓ README.md with install instructions — Phase 3 v1.0
+- ✓ SKILL.md with portable paths — Phase 3 v1.0
+- ✓ Troubleshooting section in README — Phase 3 v1.0
 
 ### Active
 
-**Part 1 — OpenTeams PPTX Skill Packaging:**
-- [ ] Self-contained skill directory — 6 PNG logo files bundled directly (no symlink to `../../Assets`)
-- [ ] `brand.json` logo paths updated to reference bundled PNGs
-- [ ] `install_pi_plugin.sh` — one-click installer that copies the skill to `~/.pi/agent/skills/openteams-pptx/`
-- [ ] `install_claude_plugin.sh` — one-click installer that installs the skill for Claude Code
-- [ ] Installers handle Python dependency check/warning (but don't create venvs)
-- [ ] Installers are idempotent (safe to re-run)
-- [ ] README.md updated with install instructions for both agents
-- [ ] Documentation files updated to reflect the installable packaging
-
-**Part 2 — Reusable Skill Packager:**
-- [ ] Local skill (`/skill:skill-packager`) that can scaffold a new pi/Claude Code skill from scratch
-- [ ] Skill packager can take any existing skill directory and generate install scripts
-- [ ] Bundles referenced assets (images, data files) into self-contained directory
-- [ ] Rewrites paths (symlinks, absolute refs) to be portable
-- [ ] Generates `install_pi_plugin.sh` and `install_claude_plugin.sh` for any skill
-- [ ] Updates/generates README with install instructions
+- [ ] `npx https://github.com/athurdekoos/ppt --pi` installs the skill for pi
+- [ ] `npx https://github.com/athurdekoos/ppt --claude` installs the skill for Claude Code
+- [ ] npx installer checks for Python 3, installs python-pptx if missing
+- [ ] npx installer backs up existing install before overwriting
+- [ ] npx installer is idempotent (safe to re-run)
+- [ ] Old `.sh` installer scripts deleted from repo
+- [ ] README updated to show npx commands instead of .sh scripts
+- [ ] package.json with bin entry pointing to CLI script
+- [ ] CLI script handles --pi and --claude flags with clear error for no/invalid flag
 
 ### Out of Scope
 
-- Python venv creation — users manage their own Python environment
-- Auto-updating / version checking after install
-- Windows / PowerShell installer — Linux/macOS `.sh` only
-- Bundling the full Assets directory (AI, SVG, JPG variants) — only the 6 PNGs the code uses
-- Publishing to a package registry
-- Skill packager as a hosted/cloud service — local only
+- Publishing to npm registry — install directly from GitHub URL
+- Windows/PowerShell support — Linux/macOS only
+- Auto-update mechanism
+- Skill packager (deferred — separate future milestone)
 
 ## Context
 
-- The skill currently lives at `openteams-pptx/` in this repo and is manually copied to `~/.pi/agent/skills/openteams-pptx/`
-- Logo assets are accessed via a symlink `assets/logos -> ../../Assets` which breaks outside this repo
-- Pi discovers skills in `~/.pi/agent/skills/` and `~/.agents/skills/` (directories with `SKILL.md`)
-- Claude Code uses `~/.claude/commands/` for custom slash commands, or can be configured to read skills directories via settings
-- The skill depends on `python-pptx`, `Pillow`, `requests`, `beautifulsoup4`, `lxml` (listed in `requirements.txt`)
-- The 6 required PNG logos are: colored horizontal, colored vertical, white horizontal, black horizontal, favicon colored, favicon white
+- The repo is at `github.com/athurdekoos/ppt`
+- npx can run packages directly from GitHub URLs: `npx https://github.com/user/repo`
+- This requires a `package.json` with a `bin` field at the repo root
+- The bin script runs via Node.js, handles file copying + Python prereq checks
+- pi discovers skills in `~/.pi/agent/skills/` (directories with `SKILL.md`)
+- Claude Code discovers skills in `~/.agents/skills/` (directories with `SKILL.md`)
+- The skill depends on Python 3 + python-pptx at runtime
 
 ## Constraints
 
-- **Logo files**: Must include only the 6 PNGs referenced in `brand.json` — not the full Assets tree
-- **No Python setup**: Installer should warn if Python/pip aren't available but not try to manage venvs
-- **Shell compatibility**: Must work on bash (Linux + macOS)
-- **Paths in SKILL.md**: Must use `<skill-dir>` pattern so the skill works from its installed location
+- **Node.js only for installer** — the CLI script must use Node.js (no bash shelling out for core logic) since npx runs Node
+- **No npm publish** — must work via GitHub URL
+- **Python prereqs** — installer should check and attempt `pip3 install python-pptx` if missing
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Bundle 6 PNGs instead of symlink | Makes skill self-contained, works anywhere | — Pending |
-| Two separate installer scripts | Pi and Claude Code have different skill directories/conventions | — Pending |
-| Don't manage Python venvs | Users have varying Python setups; installer stays simple | — Pending |
-| Build reusable skill-packager as a pi skill | Dogfood the process — use agent skills to build agent skills | — Pending |
-| Part 1 first, then Part 2 | Prove the pattern with PPTX skill before generalizing | — Pending |
+| npx from GitHub URL, not npm registry | Simpler distribution, no npm account needed | — Pending |
+| Single CLI with --pi/--claude flags | One entry point, clear UX | — Pending |
+| Delete .sh scripts entirely | Clean break, no confusion about which method to use | — Pending |
+| Node.js CLI script | Required by npx; can shell out to check Python | — Pending |
 
 ---
-*Last updated: 2026-02-28 after initialization*
+*Last updated: 2026-02-28 after milestone v2.0 initialization*

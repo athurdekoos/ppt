@@ -1,73 +1,43 @@
-# Roadmap: OpenTeams PPTX Skill — Installer & Skill Factory
+# Roadmap: OpenTeams PPTX Skill — npx Installer
 
 ## Overview
 
-Package the OpenTeams PPTX skill as a self-contained, one-click installable for pi and Claude Code, then generalize the process into a reusable skill-packager. Four phases: make it portable, make it installable, document it, then build the factory.
+Replace shell-script installers with a single npx-based CLI. Two phases: build the npx installer, then clean up old scripts and update docs.
 
 ## Phases
 
-- [x] **Phase 1: Self-Contained Skill** - Bundle logo PNGs, rewrite paths, eliminate symlinks and hardcoded references
-- [x] **Phase 2: Installer Scripts** - Create install_pi_plugin.sh and install_claude_plugin.sh with prereq checks
-- [x] **Phase 3: Documentation** - Update README, SKILL.md, and CLAUDE.md with install instructions and troubleshooting
-- [x] **Phase 4: Skill Packager** - Build reusable /skill:skill-packager for scaffolding and packaging any skill
+- [ ] **Phase 1: npx CLI Installer** — package.json + Node.js CLI that installs the skill for pi or Claude Code
+- [ ] **Phase 2: Cleanup & Documentation** — Delete .sh scripts, update all docs to reference npx
 
 ## Phase Details
 
-### Phase 1: Self-Contained Skill
-**Goal**: The openteams-pptx skill directory works when copied anywhere — no symlinks, no absolute paths, all assets bundled
-**Depends on**: Nothing (first phase)
-**Requirements**: ASSET-01, ASSET-02, ASSET-03, ASSET-04
+### Phase 1: npx CLI Installer
+**Goal**: `npx https://github.com/athurdekoos/ppt --pi` and `--claude` work end-to-end
+**Depends on**: Nothing
+**Requirements**: CLI-01, CLI-02, CLI-03, CLI-04, PREREQ-01, PREREQ-02, PREREQ-03, INST-01, INST-02, INST-03, INST-04, PKG-01, PKG-02, PKG-03
 **Success Criteria** (what must be TRUE):
-  1. `assets/logos/` contains 6 PNG files directly (not a symlink)
-  2. `brand.json` logo_assets paths resolve correctly from the skill directory
-  3. No file in the skill directory contains `/home/mia/` or other absolute paths
-  4. `generate_deck.py --demo` produces a valid .pptx when run from the skill directory with `python3`
-**Plans:** 1 plan
-- [x] 01-01-PLAN.md — Bundle logos, fix paths, verify portability
+  1. `npx https://github.com/athurdekoos/ppt --pi` installs skill to `~/.pi/agent/skills/openteams-pptx/` with all required files
+  2. `npx https://github.com/athurdekoos/ppt --claude` installs skill to `~/.agents/skills/openteams-pptx/`
+  3. Running without flags prints usage help
+  4. Missing Python 3 produces a clear error message
+  5. Missing python-pptx triggers automatic pip install attempt
+  6. Re-running backs up existing install and succeeds without errors
+**Plans:** TBD
 
-### Phase 2: Installer Scripts
-**Goal**: OpenTeams team members can run one shell script to install the skill for their agent
+### Phase 2: Cleanup & Documentation
+**Goal**: Old .sh installers removed, all documentation points to npx method
 **Depends on**: Phase 1
-**Requirements**: INST-01, INST-02, INST-03, INST-04, INST-05, INST-06
+**Requirements**: CLEAN-01, CLEAN-02, CLEAN-03, DOCS-01, DOCS-02, DOCS-03
 **Success Criteria** (what must be TRUE):
-  1. Running `./install_pi_plugin.sh` makes `/skill:openteams-pptx` available in pi
-  2. Running `./install_claude_plugin.sh` makes the skill available in Claude Code
-  3. Re-running either installer on an existing install works without errors
-  4. Running installer without Python 3 installed prints a clear warning
-  5. Previous install is backed up before overwriting
-**Plans:** 1 plan
-- [x] 02-01-PLAN.md — Create pi and Claude Code installer scripts
-
-### Phase 3: Documentation
-**Goal**: A new user can install and use the skill by reading the README alone
-**Depends on**: Phase 2
-**Requirements**: DOCS-01, DOCS-02, DOCS-03, DOCS-04
-**Success Criteria** (what must be TRUE):
-  1. README has step-by-step install instructions for both pi and Claude Code
-  2. SKILL.md contains no absolute paths or machine-specific references
-  3. CLAUDE.md reflects the installable skill structure
-  4. Troubleshooting section covers: missing Python, permission errors, fonts not found
-**Plans:** 1 plan
-- [x] 03-01-PLAN.md — Update README, SKILL.md, CLAUDE.md with install docs and troubleshooting
-
-### Phase 4: Skill Packager
-**Goal**: User can invoke `/skill:skill-packager` to scaffold a new skill or package an existing one with installers
-**Depends on**: Phase 3
-**Requirements**: PACK-01, PACK-02, PACK-03, PACK-04, PACK-05, PACK-06, ASSET-05
-**Success Criteria** (what must be TRUE):
-  1. `/skill:skill-packager scaffold` creates a valid skill directory with SKILL.md, README, and structure
-  2. `/skill:skill-packager package <dir>` generates install_pi_plugin.sh and install_claude_plugin.sh
-  3. Packager detects and bundles assets referenced in SKILL.md and scripts
-  4. Packager rewrites absolute/symlink paths to portable relative paths
-  5. Generated README includes correct install instructions for the skill name
-**Plans:** 1 plan
-- [x] 04-01-PLAN.md — Build scaffold.py and package.py with asset detection, symlink resolution, path rewriting
+  1. `install_pi_plugin.sh` and `install_claude_plugin.sh` no longer exist in repo
+  2. README Installation section shows npx commands only
+  3. No remaining references to .sh installers in README, SKILL.md, or CLAUDE.md
+  4. CLAUDE.md references npx install method
+**Plans:** TBD
 
 ## Progress
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Self-Contained Skill | 1/1 | Complete | 2026-02-28 |
-| 2. Installer Scripts | 1/1 | Complete | 2026-02-28 |
-| 3. Documentation | 1/1 | Complete | 2026-02-28 |
-| 4. Skill Packager | 1/1 | Complete | 2026-02-28 |
+| Phase | Plans Complete | Status |
+|-------|----------------|--------|
+| 1. npx CLI Installer | 0/0 | Not Started |
+| 2. Cleanup & Documentation | 0/0 | Not Started |

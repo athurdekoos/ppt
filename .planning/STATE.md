@@ -1,51 +1,26 @@
-# Project State
+# State: OpenTeams PPTX Skill — npx Installer
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-28)
 
-**Core value:** A repeatable, one-command workflow for building and distributing agent skills
-**Current focus:** Phase 1 — Self-Contained Skill
+**Core value:** One npx command installs the skill for any supported agent
+**Current focus:** Phase 1 — npx CLI Installer
 
 ## Current Position
 
-Phase: 1 of 4 (Self-Contained Skill)
-Plan: 0 of ? in current phase
-Status: Ready to plan
-Last activity: 2026-02-28 — Project initialized, roadmap created
+- **Milestone:** v2.0
+- **Phase:** 1 of 2
+- **Plan:** Not yet planned
+- **Status:** Not started
 
-Progress: ░░░░░░░░░░ 0%
+## Decisions
 
-## Performance Metrics
+_(none yet)_
 
-**Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+## Blockers
 
-**By Phase:**
+_(none)_
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| - | - | - | - |
-
-## Accumulated Context
-
-### Decisions
-
-Decisions are logged in PROJECT.md Key Decisions table.
-No decisions yet.
-
-### Pending Todos
-
-None yet.
-
-### Blockers/Concerns
-
-None yet.
-
-## Session Continuity
-
-Last session: 2026-02-28 03:11
-Stopped at: Roadmap created, ready to plan Phase 1
-Resume file: None
+---
+*Last updated: 2026-02-28 after v2.0 initialization*
