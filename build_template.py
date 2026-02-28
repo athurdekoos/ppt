@@ -6,7 +6,7 @@ Generates a production-ready, on-brand .pptx template deck.
 
 Usage:
     python build_template.py \
-        --assets ./Assests \
+        --assets ./Assets \
         --guidelines ./OpenTeams_Brand_Guidelines_2025.pdf \
         --site https://openteams.com/ \
         --out ./OpenTeams_Template_2025.pptx
@@ -1509,14 +1509,14 @@ def main():
         epilog=textwrap.dedent("""\
             Example:
               python build_template.py \\
-                --assets ./Assests \\
+                --assets ./Assets \\
                 --guidelines ./OpenTeams_Brand_Guidelines_2025.pdf \\
                 --site https://openteams.com/ \\
                 --out ./OpenTeams_Template_2025.pptx
         """)
     )
-    parser.add_argument("--assets", default="./Assests",
-                        help="Path to assets folder (default: ./Assests)")
+    parser.add_argument("--assets", default="./Assets",
+                        help="Path to assets folder (default: ./Assets)")
     parser.add_argument("--guidelines", default="./OpenTeams_Brand_Guidelines_2025.pdf",
                         help="Path to brand guidelines PDF")
     parser.add_argument("--site", default="https://openteams.com/",
