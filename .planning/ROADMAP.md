@@ -22,7 +22,8 @@ Package the OpenTeams PPTX skill as a self-contained, one-click installable for 
   2. `brand.json` logo_assets paths resolve correctly from the skill directory
   3. No file in the skill directory contains `/home/mia/` or other absolute paths
   4. `generate_deck.py --demo` produces a valid .pptx when run from the skill directory with `python3`
-**Plans**: TBD
+**Plans:** 1 plan
+- [ ] 01-01-PLAN.md — Bundle logos, fix paths, verify portability
 
 ### Phase 2: Installer Scripts
 **Goal**: OpenTeams team members can run one shell script to install the skill for their agent
