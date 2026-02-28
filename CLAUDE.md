@@ -22,6 +22,10 @@ Logos are under `2025 NEW LOGO/` organized by color variant and format:
 
 Each variant is available in horizontal and vertical lockups, plus favicon.
 
+## Git Commits
+
+- **Never** include a `Co-Authored-By` line in commit messages. All commits should be authored solely by the user.
+
 ## Notes
 
 - There are no build commands, tests, or linting — this is a static assets directory.

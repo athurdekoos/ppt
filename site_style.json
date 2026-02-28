@@ -1,0 +1,31 @@
+{
+  "background": "predominantly white with color accent sections",
+  "card_radius_px": 50,
+  "card_shadow": "none !important",
+  "card_border": "none (shadow-based elevation)",
+  "spacing_scale_px": [
+    8,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "button_style": "pill / fully-rounded, filled Day Blue with white text",
+  "button_radius_px": 999,
+  "heading_scale": {
+    "h1_pt": 44,
+    "h2_pt": 32,
+    "h3_pt": 24,
+    "h4_pt": 18
+  },
+  "gradient_usage": "subtle blue gradients on hero sections (Night Navy \u2192 Day Blue)",
+  "icon_style": "line icons, medium stroke, brand-colored",
+  "image_treatment": "rounded corners ~16px, occasional blue tint overlays",
+  "section_padding_px": 96,
+  "hero_style": "large headline left-aligned, illustration/image right, white or light gradient bg",
+  "white_dominance_ratio": 0.0,
+  "css_variables_found": 52,
+  "pages_crawled": 1
+}
