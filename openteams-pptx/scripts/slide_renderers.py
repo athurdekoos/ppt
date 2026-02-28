@@ -392,17 +392,6 @@ def render_cover(sb: SlideBuilder, spec: dict) -> None:
     make_gradient_rect(slide, Inches(7.5), 0, Inches(5.833), sb.H,
                        sb.theme.night_navy, sb.theme.day_blue, angle=135)
 
-    # Decorative dots
-    for dx, dy, col in [
-        (8.2, 1.5, sb.theme.yellow), (9.8, 2.0, sb.theme.salmon),
-        (8.8, 5.0, sb.theme.day_blue), (10.5, 4.2, sb.theme.yellow),
-    ]:
-        dot = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(dx), Inches(dy),
-                                      Inches(0.35), Inches(0.35))
-        set_shape_fill(dot, col)
-        set_no_border(dot)
-        set_shape_alpha(dot, '30000')
-
     # Decorative favicon on gradient panel
     if sb.theme.favicon_colored and os.path.exists(sb.theme.favicon_colored):
         fav_size = Inches(3.5)
