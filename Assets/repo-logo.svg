@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" fill="none">
+  <defs>
+    <linearGradient id="hero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022791"/>
+      <stop offset="100%" stop-color="#4D75FE"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF8A69"/>
+      <stop offset="100%" stop-color="#FAA944"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#022791" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background pill -->
+  <rect x="0" y="0" width="800" height="200" rx="24" fill="#F7F8FC"/>
+
+  <!-- === ICON: Three connected nodes forming a pipeline === -->
+  
+  <!-- Connection lines (behind nodes) -->
+  <line x1="95" y1="100" x2="155" y2="70" stroke="#4D75FE" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.5"/>
+  <line x1="155" y1="70" x2="155" y2="130" stroke="#4D75FE" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.5"/>
+  <line x1="95" y1="100" x2="155" y2="130" stroke="#FF8A69" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.5"/>
+
+  <!-- Node 1: Data (left) — GitHub/GraphQL data source -->
+  <circle cx="95" cy="100" r="28" fill="url(#hero)" filter="url(#shadow)"/>
+  <!-- Simplified database/query icon -->
+  <ellipse cx="95" cy="91" rx="12" ry="5" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M83 91 v16 c0 3 5.4 5 12 5s12-2 12-5 v-16" fill="none" stroke="white" stroke-width="2"/>
+  <ellipse cx="95" cy="100" rx="12" ry="5" fill="none" stroke="white" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Node 2: Presentation (top-right) — PPTX output -->
+  <circle cx="155" cy="70" r="22" fill="#4D75FE" filter="url(#shadow)"/>
+  <!-- Simplified slide/screen icon -->
+  <rect x="143" y="60" width="24" height="16" rx="2" fill="none" stroke="white" stroke-width="2"/>
+  <line x1="155" y1="76" x2="155" y2="80" stroke="white" stroke-width="2"/>
+  <line x1="149" y1="80" x2="161" y2="80" stroke="white" stroke-width="2"/>
+
+  <!-- Node 3: Skills (bottom-right) — distribution -->
+  <circle cx="155" cy="130" r="22" fill="url(#warm)" filter="url(#shadow)"/>
+  <!-- Simplified package/box icon -->
+  <rect x="143" y="121" width="24" height="18" rx="2" fill="none" stroke="white" stroke-width="2"/>
+  <line x1="143" y1="128" x2="167" y2="128" stroke="white" stroke-width="2"/>
+  <line x1="155" y1="121" x2="155" y2="139" stroke="white" stroke-width="1.5"/>
+
+  <!-- === TEXT === -->
+
+  <!-- Title -->
+  <text x="210" y="88" font-family="'Inter Tight', 'Inter', Arial, sans-serif" font-weight="700" font-size="42" fill="#022791">Open</text>
+  <text x="322" y="88" font-family="'Inter Tight', 'Inter', Arial, sans-serif" font-weight="700" font-size="42" fill="#4D75FE">Teams</text>
+
+  <!-- Subtitle -->
+  <text x="210" y="118" font-family="'Inter Tight', 'Inter', Arial, sans-serif" font-weight="400" font-size="18" fill="#3F3F3F">Brand &amp; Presentation Toolkit</text>
+
+  <!-- Pipeline badges -->
+  <rect x="210" y="135" width="60" height="24" rx="12" fill="#022791" opacity="0.08"/>
+  <text x="240" y="151" font-family="'Roboto', Arial, sans-serif" font-weight="500" font-size="11" fill="#022791" text-anchor="middle">DATA</text>
+
+  <text x="278" y="151" font-family="'Roboto', Arial, sans-serif" font-size="14" fill="#4D75FE">→</text>
+
+  <rect x="290" y="135" width="68" height="24" rx="12" fill="#4D75FE" opacity="0.10"/>
+  <text x="324" y="151" font-family="'Roboto', Arial, sans-serif" font-weight="500" font-size="11" fill="#4D75FE" text-anchor="middle">SLIDES</text>
+
+  <text x="366" y="151" font-family="'Roboto', Arial, sans-serif" font-size="14" fill="#FF8A69">→</text>
+
+  <rect x="378" y="135" width="64" height="24" rx="12" fill="#FF8A69" opacity="0.10"/>
+  <text x="410" y="151" font-family="'Roboto', Arial, sans-serif" font-weight="500" font-size="11" fill="#FF8A69" text-anchor="middle">SKILLS</text>
+
+  <!-- Accent bar at bottom -->
+  <rect x="24" y="184" width="120" height="3" rx="1.5" fill="url(#hero)" opacity="0.3"/>
+</svg>

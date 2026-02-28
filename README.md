@@ -1,23 +1,106 @@
-# OpenTeams Brand Assets & Presentation Toolkit
+```
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║       ╭──╮                                                   ║
+║       │DB│──────┐                                            ║
+║       ╰──╯      │                                            ║
+║         ╲      ╭┴─╮    ╭──╮                                  ║
+║          ╲─────│▣ │────│⬡ │                                  ║
+║                ╰──╯    ╰──╯                                  ║
+║                                                              ║
+║         ██████╗ ██████╗ ███████╗███╗   ██╗                   ║
+║        ██╔═══██╗██╔══██╗██╔════╝████╗  ██║                   ║
+║        ██║   ██║██████╔╝█████╗  ██╔██╗ ██║                   ║
+║        ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║                   ║
+║        ╚██████╔╝██║     ███████╗██║ ╚████║                   ║
+║         ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝                  ║
+║        ████████╗███████╗ █████╗ ███╗   ███╗███████╗          ║
+║        ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔════╝          ║
+║           ██║   █████╗  ███████║██╔████╔██║███████╗           ║
+║           ██║   ██╔══╝  ██╔══██║██║╚██╔╝██║╚════██║          ║
+║           ██║   ███████╗██║  ██║██║ ╚═╝ ██║███████║          ║
+║           ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝        ║
+║                                                              ║
+║        Brand & Presentation Toolkit                          ║
+║                                                              ║
+║        [ DATA ]───▶[ SLIDES ]───▶[ SKILLS ]                  ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+```
 
-Brand assets, logo files, and an automated PowerPoint generator for OpenTeams.
+<p align="center">
+  <strong>Data → Slides → Skills</strong> — the OpenTeams automation pipeline
+</p>
 
-## What's Here
+<p align="center">
+  <a href="#-pptx-generator"><img src="https://img.shields.io/badge/PPTX_Generator-4D75FE?style=flat-square&logo=microsoftpowerpoint&logoColor=white" alt="PPTX Generator"/></a>
+  <a href="#-brand-assets"><img src="https://img.shields.io/badge/Brand_Assets-022791?style=flat-square&logo=databricks&logoColor=white" alt="Brand Assets"/></a>
+  <a href="#-skill-packager"><img src="https://img.shields.io/badge/Skill_Packager-FF8A69?style=flat-square&logo=npm&logoColor=white" alt="Skill Packager"/></a>
+  <a href="https://github.com/Quansight/automated-reporting-gql"><img src="https://img.shields.io/badge/QReport_GraphQL-FAA944?style=flat-square&logo=graphql&logoColor=white" alt="QReport GraphQL"/></a>
+</p>
 
-### 📊 PPTX Generator (`openteams-pptx/`)
+---
 
-A pi agent skill that generates on-brand PowerPoint presentations from natural language. Ask Claude to create a deck and it handles content structure, slide layout, brand compliance, and `.pptx` output.
+## How It All Connects
+
+This repo is part of the **OpenTeams automation ecosystem** — a pipeline that turns raw GitHub data into polished, brand-compliant deliverables:
+
+```
+┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
+│  📊 Data Layer      │     │  📑 Output Layer     │     │  📦 Distribution    │
+│                     │     │                      │     │                     │
+│  automated-         │────▶│  ppt/                │────▶│  skill-packager/    │
+│  reporting-gql      │     │  openteams-pptx/     │     │  npx installer      │
+│                     │     │                      │     │                     │
+│  GitHub GraphQL     │     │  Brand assets        │     │  pi + Claude Code   │
+│  PR/issue reports   │     │  PPTX generator      │     │  agent skills       │
+│  qreport-desktop    │     │  Brand guidelines    │     │                     │
+└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
+```
+
+| Repo | Role | Link |
+|------|------|------|
+| **automated-reporting-gql** | Pulls PR/issue data from GitHub via GraphQL → markdown/PDF reports | [Quansight/automated-reporting-gql](https://github.com/Quansight/automated-reporting-gql) |
+| **ppt** ← _you are here_ | Brand assets + AI-powered PPTX generator | [athurdekoos/ppt](https://github.com/athurdekoos/ppt) |
+| **skill-packager** | Scaffolds and packages agent skills for distribution | Bundled in `skill-packager/` |
+
+---
+
+## 📊 PPTX Generator
+
+> `openteams-pptx/` — A pi agent skill that generates on-brand PowerPoint presentations from natural language.
+
+Ask Claude to create a deck and it handles content structure, slide layout, brand compliance, and `.pptx` output.
 
 **Quick example:**
 > "Create a 10-slide pitch deck for IBM about our open source platform"
 
 → Produces a branded `.pptx` with cover, agenda, content slides, metrics, case study, and closing.
 
+**11 slide types:** cover · section divider · agenda · content · two-column · quote · metrics · team · case study · closing · blank
+
 See [`openteams-pptx/README.md`](openteams-pptx/README.md) for full usage, slide types, and CLI docs.
 
-### 🎨 Brand Assets (`Assets/`)
+### Install
 
-Official OpenTeams logo files in multiple formats and variants:
+```bash
+# As a pi skill
+npx https://github.com/athurdekoos/ppt --pi
+
+# As a Claude Code skill
+npx https://github.com/athurdekoos/ppt --claude
+
+# Manual CLI
+pip3 install python-pptx
+python3 openteams-pptx/scripts/generate_deck.py --demo \
+  --brand openteams-pptx/references/brand.json --out demo.pptx
+```
+
+---
+
+## 🎨 Brand Assets
+
+> `Assets/` — Official OpenTeams logo files in every format and variant.
 
 | Directory | Contents |
 |-----------|----------|
@@ -28,17 +111,37 @@ Official OpenTeams logo files in multiple formats and variants:
 | `Email signature OT logo/` | Sized for email signatures (with/without tagline) |
 | `Horizontal-PDF-logo/` | PDF format horizontal logo |
 
-Each variant is available in horizontal and vertical lockups, plus favicon.
+### Brand Colors
 
-### 📋 Brand Guidelines
+| Color | Hex | Role |
+|-------|-----|------|
+| 🔵 Night Navy | `#022791` | Primary |
+| 🔷 Day Blue | `#4D75FE` | Primary bright |
+| 🟠 Salmon | `#FF8A69` | Warm accent |
+| 🟡 Yellow | `#FAA944` | Warm accent |
+| 🟢 Accent Green | `#3AD58E` | Secondary accent |
 
-- [`OpenTeams_Brand_Guidelines_2025.pdf`](OpenTeams_Brand_Guidelines_2025.pdf) — Official 36-page brand guidelines document
+Full guidelines: [`OpenTeams_Brand_Guidelines_2025.pdf`](OpenTeams_Brand_Guidelines_2025.pdf) (36 pages)
 
-### 📝 Brand Compliance Review (`review/`)
+---
 
-- Mock deck and compliance audit report from brand review process
+## 📦 Skill Packager
 
-## Key Config Files
+> `skill-packager/` — Scaffold new agent skills and package existing ones for distribution.
+
+```bash
+# Scaffold a new skill
+python3 skill-packager/scripts/scaffold.py --name my-skill --description "Does amazing things" --out ./my-skill
+
+# Package an existing skill with pi + Claude Code installers
+python3 skill-packager/scripts/package.py --skill-dir ./my-skill
+```
+
+See [`skill-packager/README.md`](skill-packager/README.md) for full docs.
+
+---
+
+## 📋 Config Files
 
 | File | Purpose |
 |------|---------|
@@ -46,18 +149,21 @@ Each variant is available in horizontal and vertical lockups, plus favicon.
 | [`site_style.json`](site_style.json) | Website style tokens scraped from openteams.com |
 | [`openteams-pptx/references/brand.json`](openteams-pptx/references/brand.json) | Brand tokens for slide generation (colors, fonts, spacing, logos) |
 
+---
+
 ## Repository Structure
 
 ```
 ppt/
 ├── README.md                              # This file
 ├── CLAUDE.md                              # AI assistant guidance
+├── package.json                           # npx installer entry point
 ├── OpenTeams_Brand_Guidelines_2025.pdf    # Official brand guidelines
 ├── assets_index.json                      # Logo asset index
 ├── site_style.json                        # Website style tokens
-├── requirements.txt                       # Python dependencies
 │
 ├── Assets/                                # Logo files (all formats/variants)
+│   ├── repo-logo.svg                      # ← This repo's logo
 │   ├── OT_Colored_Logos/
 │   ├── OT_White_Logos/
 │   ├── OT_Black_Logos/
@@ -66,15 +172,16 @@ ppt/
 │   └── Horizontal-PDF-logo/
 │
 ├── openteams-pptx/                        # PPTX generator skill
-│   ├── README.md                          # Skill documentation
-│   ├── SKILL.md                           # Pi agent skill definition
-│   ├── docs/
-│   │   └── ARCHITECTURE.md                # System design & data flow
-│   ├── references/
-│   │   ├── brand.json                     # Brand tokens
-│   │   └── slide_types.md                 # Slide type catalog & schema
+│   ├── README.md
+│   ├── SKILL.md
+│   ├── docs/ARCHITECTURE.md
+│   ├── references/                        # Brand tokens + slide schemas
 │   ├── scripts/                           # Python source (6 modules, ~1700 LOC)
-│   └── tests/                             # Unit + integration tests
+│   └── tests/
+│
+├── skill-packager/                        # Skill scaffolding + packaging tool
+│   ├── README.md
+│   └── scripts/
 │
 ├── review/                                # Brand compliance audit
 │   └── COMPLIANCE_REPORT.md
@@ -82,40 +189,20 @@ ppt/
 └── docs/plans/                            # Implementation plans
 ```
 
-## Getting Started
+---
 
-### For Presentations (via Claude)
-
-Just ask Claude to make a presentation. The skill triggers automatically on keywords like "slides", "deck", "presentation", or "powerpoint".
-
-### For Presentations (CLI)
-
-```bash
-# Setup
-python -m venv ~/.venvs/pptx
-~/.venvs/pptx/bin/pip install -r requirements.txt
-
-# Generate demo deck
-~/.venvs/pptx/bin/python openteams-pptx/scripts/generate_deck.py \
-  --demo \
-  --brand openteams-pptx/references/brand.json \
-  --out demo.pptx
-```
-
-### Uploading to Google Slides
+## Uploading to Google Slides
 
 Generated `.pptx` files work directly in Google Slides:
 
-1. Go to [Google Drive](https://drive.google.com)
-2. Click **New** → **File upload** and select the `.pptx` file
-3. Once uploaded, double-click the file — Drive will show a preview
-4. Click **Open with Google Slides** at the top
-5. Google Slides converts the file automatically, preserving layouts, colors, and text
+1. Go to [Google Drive](https://drive.google.com) → **New** → **File upload**
+2. Double-click the uploaded file → **Open with Google Slides**
+3. **File** → **Save as Google Slides** for native collaboration
 
-> **Tip:** Go to **File** → **Save as Google Slides** to save it natively for collaboration.
+> **Tip:** If fonts fall back to Arial, select all text (**Ctrl+A**) and apply **Inter Tight** from the font menu — Google Slides includes it.
 
-> **Note:** Custom fonts (Inter Tight) may fall back to Arial in Google Slides. To fix this, select all text (**Ctrl+A**) and apply Inter Tight from the font menu — Google Slides includes it in its font library.
+---
 
-### For Logo Assets
-
-Browse `Assets/` for the variant you need. Use [`assets_index.json`](assets_index.json) for programmatic access. Follow the brand guidelines PDF for usage rules.
+<p align="center">
+  <sub>Built by <a href="https://openteams.com">OpenTeams</a> · Quansight</sub>
+</p>
