@@ -29,10 +29,10 @@
 </p>
 
 <p align="center">
-  <a href="#-pptx-generator"><img src="https://img.shields.io/badge/PPTX_Generator-4D75FE?style=flat-square&logo=microsoftpowerpoint&logoColor=white" alt="PPTX Generator"/></a>
-  <a href="#-brand-assets"><img src="https://img.shields.io/badge/Brand_Assets-022791?style=flat-square&logo=databricks&logoColor=white" alt="Brand Assets"/></a>
-  <a href="#-skill-packager"><img src="https://img.shields.io/badge/Skill_Packager-FF8A69?style=flat-square&logo=npm&logoColor=white" alt="Skill Packager"/></a>
-  <a href="https://github.com/Quansight/automated-reporting-gql"><img src="https://img.shields.io/badge/QReport_GraphQL-FAA944?style=flat-square&logo=graphql&logoColor=white" alt="QReport GraphQL"/></a>
+  <a href="https://discord.gg/YmsT7FFnW8"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
+  <a href="https://github.com/athurdekoos"><img src="https://img.shields.io/badge/GitHub-022791?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+  <a href="https://openteams.com"><img src="https://img.shields.io/badge/OpenTeams-4D75FE?style=flat-square&logo=data:image/svg+xml;base64,&logoColor=white" alt="OpenTeams"/></a>
+  <a href="https://www.linkedin.com/in/amelia-thurdekoos-26450b86/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 </p>
 
 ---
