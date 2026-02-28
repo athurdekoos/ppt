@@ -23,7 +23,8 @@ from pptx import Presentation
 from pptx.util import Inches, Emu
 
 from brand_engine import load_brand, build_theme
-from slide_renderers import SlideBuilder, RENDERERS
+from slide_builder import SlideBuilder
+from slide_renderers import RENDERERS
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger("generate_deck")
