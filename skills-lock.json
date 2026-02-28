@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "subagent-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "1f5831dbfcddda9ac3e706f2ca81a3887fef9598159966d27ef672d86e255242"
+    }
+  }
+}
