@@ -7,22 +7,25 @@ The spec dict comes from the user's slide JSON.
 """
 from __future__ import annotations
 
+import datetime
 import os
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
 from lxml import etree
 
 from pptx_helpers import (
     hex_to_rgbcolor, luminance, contrast_ratio, auto_text_color,
     set_shape_fill, set_shape_rounded_rect_radius, set_no_border,
-    add_slide_bg_color, make_gradient_rect, set_shape_alpha, _get_spPr,
+    add_slide_bg_color, make_gradient_rect, set_shape_alpha, get_spPr,
 )
 from brand_engine import ThemeConfig
+
+_CURRENT_YEAR = datetime.date.today().year
 
 try:
     from PIL import Image
@@ -233,7 +236,7 @@ class SlideBuilder:
             set_no_border(shape)
 
         if shadow:
-            spPr = _get_spPr(shape)
+            spPr = get_spPr(shape)
             if spPr is not None:
                 nsuri = 'http://schemas.openxmlformats.org/drawingml/2006/main'
                 effectLst = etree.SubElement(spPr, f'{{{nsuri}}}effectLst')
@@ -293,7 +296,7 @@ class SlideBuilder:
             txBody.set('anchor', 'ctr')
         return shape
 
-    def add_footer(self, slide, text: str = "© 2025 OpenTeams  |  openteams.com",
+    def add_footer(self, slide, text: str = f"© {_CURRENT_YEAR} OpenTeams  |  openteams.com",
                    show_logo: bool = True, bg_color: str = None):
         footer_h = Inches(0.5)
         y = self.H - footer_h
@@ -433,7 +436,7 @@ def render_cover(sb: SlideBuilder, spec: dict) -> None:
     sb.add_button(slide, "Get Started", sb.M, Inches(5.8))
 
     # Footer
-    sb.add_footer(slide, "Confidential  |  © 2025 OpenTeams", show_logo=False)
+    sb.add_footer(slide, f"Confidential  |  © {_CURRENT_YEAR} OpenTeams", show_logo=False)
 
 
 def render_section_divider(sb: SlideBuilder, spec: dict) -> None:
@@ -459,8 +462,11 @@ def render_agenda(sb: SlideBuilder, spec: dict) -> None:
                      sb.theme.salmon, sb.theme.day_blue]
 
     y_start = Inches(2.4)
+    # Dynamically reduce spacing so items fit above the footer (max y ≈ 6.5")
+    max_items_height = 4.1  # inches available for items
+    item_spacing = min(0.85, max_items_height / max(len(items), 1))
     for i, item in enumerate(items):
-        y = y_start + Inches(i * 0.85)
+        y = y_start + Inches(i * item_spacing)
         accent = accent_colors[i % len(accent_colors)]
 
         # Number circle
@@ -668,9 +674,12 @@ def render_team(sb: SlideBuilder, spec: dict) -> None:
     accent_colors = [sb.theme.day_blue, sb.theme.night_navy, sb.theme.yellow, sb.theme.salmon]
 
     num_members = min(len(members), 6)  # cap at 6
-    card_w = Inches(2.7)
-    card_h = Inches(4.2)
     gap = Inches(0.35)
+    # Dynamically size cards so they fit within the slide width
+    usable_w = sb.W - 2 * sb.M - Inches(0.6)  # account for start_x offset
+    total_gaps = gap * (num_members - 1) if num_members > 1 else 0
+    card_w = min(Inches(2.7), int((usable_w - total_gaps) / max(num_members, 1)))
+    card_h = Inches(4.2)
     start_x = sb.M + Inches(0.3)
     y = Inches(2.3)
 

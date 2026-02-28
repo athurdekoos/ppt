@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """
-OpenTeams 2025 PowerPoint Template Builder
-===========================================
-Generates a production-ready, on-brand .pptx template deck.
+OpenTeams 2025 PowerPoint Template Builder  [DEPRECATED]
+=========================================================
+This script is DEPRECATED. Use the modular generator instead:
 
-Usage:
-    python build_template.py \
-        --assets ./Assets \
-        --guidelines ./OpenTeams_Brand_Guidelines_2025.pdf \
-        --site https://openteams.com/ \
+    cd openteams-pptx/scripts
+    python generate_deck.py --demo --brand ../references/brand.json --out demo.pptx
+
+This file is kept for reference only and will be removed in a future version.
+See openteams-pptx/ for the maintained, modular replacement.
+
+Legacy usage (no longer recommended):
+    python build_template.py \\
+        --assets ./Assets \\
+        --guidelines ./OpenTeams_Brand_Guidelines_2025.pdf \\
+        --site https://openteams.com/ \\
         --out ./OpenTeams_Template_2025.pptx
 
 Requirements:  pip install python-pptx requests beautifulsoup4 Pillow lxml
@@ -18,8 +24,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import warnings
 import logging
-import math
 import os
 import re
 import sys
@@ -37,7 +43,6 @@ try:
     from pptx.dml.color import RGBColor
     from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
     from pptx.enum.shapes import MSO_SHAPE
-    import pptx.oxml.ns as nsmap
     from lxml import etree
 except ImportError as exc:
     sys.exit(f"Missing dependency: {exc}. Run: pip install -r requirements.txt")
@@ -1529,6 +1534,14 @@ def main():
                         help="Enable debug logging")
 
     args = parser.parse_args()
+
+    warnings.warn(
+        "build_template.py is deprecated. Use openteams-pptx/scripts/generate_deck.py instead.\n"
+        "  Example: python openteams-pptx/scripts/generate_deck.py "
+        "--demo --brand openteams-pptx/references/brand.json --out demo.pptx",
+        DeprecationWarning,
+        stacklevel=2,
+    )
 
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)

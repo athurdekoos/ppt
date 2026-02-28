@@ -25,7 +25,7 @@
   "image_treatment": "rounded corners ~16px, occasional blue tint overlays",
   "section_padding_px": 96,
   "hero_style": "large headline left-aligned, illustration/image right, white or light gradient bg",
-  "white_dominance_ratio": 0.0,
+  "white_dominance_ratio": "unknown (CSS backgrounds not detected via regex; site likely uses JS rendering)",
   "css_variables_found": 52,
   "pages_crawled": 1
 }

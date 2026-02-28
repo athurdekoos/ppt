@@ -4,11 +4,19 @@ Extracted from build_template.py Section 5.
 """
 from __future__ import annotations
 
+import logging
+import re
+
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
 from lxml import etree
+
+log = logging.getLogger(__name__)
+
+_HEX_RE = re.compile(r'^#?([0-9a-fA-F]{6})$')
+_FALLBACK_COLOR = "#000000"
 
 
 # ---------------------------------------------------------------------------
@@ -16,12 +24,23 @@ from lxml import etree
 # ---------------------------------------------------------------------------
 
 def hex_to_rgbcolor(hex_val: str) -> RGBColor:
+    """Convert a hex color string to an RGBColor.
+
+    Validates input and falls back to black with a warning on bad values.
+    """
+    m = _HEX_RE.match(hex_val.strip())
+    if not m:
+        log.warning("Invalid hex color '%s' — falling back to %s", hex_val, _FALLBACK_COLOR)
+        hex_val = _FALLBACK_COLOR
     h = hex_val.lstrip("#")
     return RGBColor(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
 def luminance(hex_val: str) -> float:
     """Relative luminance for WCAG contrast check."""
+    m = _HEX_RE.match(hex_val.strip())
+    if not m:
+        return 0.0
     h = hex_val.lstrip("#")
     r, g, b = int(h[:2], 16) / 255, int(h[2:4], 16) / 255, int(h[4:6], 16) / 255
 
@@ -40,8 +59,8 @@ def contrast_ratio(c1: str, c2: str) -> float:
 def auto_text_color(bg_hex: str) -> str:
     """Pick white or black text for best contrast on given background."""
     cr_white = contrast_ratio(bg_hex, "#FFFFFF")
-    cr_black = contrast_ratio(bg_hex, "#0C0C0C")
-    return "#FFFFFF" if cr_white > cr_black else "#0C0C0C"
+    cr_black = contrast_ratio(bg_hex, "#000000")
+    return "#FFFFFF" if cr_white > cr_black else "#000000"
 
 
 # ---------------------------------------------------------------------------
@@ -70,7 +89,7 @@ def set_shape_rounded_rect_radius(shape, radius_emu: int):
         gd.set('name', 'adj')
         min_dim = min(shape.width, shape.height)
         if min_dim > 0:
-            frac = min(radius_emu / (min_dim / 2), 1.0)
+            frac = min(radius_emu / (min_dim / 2), 0.98)  # cap below 1.0 to avoid fully rounded
             gd.set('fmla', f'val {int(frac * 50000)}')
 
 
@@ -87,7 +106,7 @@ def add_slide_bg_color(slide, hex_color: str):
     fill.fore_color.rgb = hex_to_rgbcolor(hex_color)
 
 
-def _get_spPr(shape):
+def get_spPr(shape):
     """Get the spPr element from a shape, handling both p: and a: namespaces."""
     sp = shape._element
     spPr = sp.find('{http://schemas.openxmlformats.org/presentationml/2006/main}spPr')
@@ -101,12 +120,16 @@ def _get_spPr(shape):
     return spPr
 
 
+# Keep old name as alias for backward compatibility
+_get_spPr = get_spPr
+
+
 def make_gradient_rect(slide, left, top, width, height, color1_hex, color2_hex, angle=0):
     """Add a rectangle with gradient fill using XML manipulation."""
     shape = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
     set_no_border(shape)
 
-    sp_pr = _get_spPr(shape)
+    sp_pr = get_spPr(shape)
     if sp_pr is None:
         set_shape_fill(shape, color1_hex)
         return shape
@@ -139,12 +162,27 @@ def make_gradient_rect(slide, left, top, width, height, color1_hex, color2_hex, 
 
 
 def set_shape_alpha(shape, alpha_pct_str: str):
-    """Set fill transparency on a shape. alpha_pct_str like '30000' = 30%."""
-    spPr = _get_spPr(shape)
+    """Set fill transparency on a shape. alpha_pct_str like '30000' = 30%.
+
+    Works with both solid fills and gradient fills.
+    """
+    spPr = get_spPr(shape)
     if spPr is None:
         return
     nsuri = 'http://schemas.openxmlformats.org/drawingml/2006/main'
+
+    # Try solid fill first
     solidFill = spPr.find(f'{{{nsuri}}}solidFill')
     if solidFill is not None and len(solidFill) > 0:
         alpha = etree.SubElement(solidFill[0], f'{{{nsuri}}}alpha')
         alpha.set('val', alpha_pct_str)
+        return
+
+    # Fall back to gradient fill stops
+    gradFill = spPr.find(f'{{{nsuri}}}gradFill')
+    if gradFill is not None:
+        for gs in gradFill.findall(f'.//{{{nsuri}}}gs'):
+            color_elem = gs.find(f'{{{nsuri}}}srgbClr')
+            if color_elem is not None:
+                alpha = etree.SubElement(color_elem, f'{{{nsuri}}}alpha')
+                alpha.set('val', alpha_pct_str)

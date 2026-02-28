@@ -13,6 +13,7 @@ import logging
 import re
 import sys
 from typing import Any, Dict, List
+from urllib.parse import urlparse
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger("refresh_site_style")
@@ -22,6 +23,14 @@ try:
     from bs4 import BeautifulSoup
 except ImportError:
     sys.exit("Missing dependencies. Run: pip install requests beautifulsoup4 lxml")
+
+
+def _is_same_origin(candidate_url: str, origin_url: str) -> bool:
+    """Return True if candidate_url shares the same hostname as origin_url."""
+    try:
+        return urlparse(candidate_url).hostname == urlparse(origin_url).hostname
+    except Exception:
+        return False
 
 
 def crawl_website(url: str) -> Dict[str, Any]:
@@ -34,7 +43,10 @@ def crawl_website(url: str) -> Dict[str, Any]:
         if r.status_code == 200 and "xml" in r.headers.get("content-type", ""):
             soup = BeautifulSoup(r.text, "lxml-xml")
             locs = [loc.text for loc in soup.find_all("loc")]
-            candidates = [u for u in locs if any(k in u.lower() for k in
+            # Only follow same-origin links to prevent SSRF
+            candidates = [u for u in locs
+                          if _is_same_origin(u, url) and
+                          any(k in u.lower() for k in
                           ("product", "feature", "solution", "platform", "about"))]
             pages_to_fetch.extend(candidates[:3])
     except Exception as e:
@@ -76,9 +88,12 @@ def crawl_website(url: str) -> Dict[str, Any]:
                     href = url.rstrip("/") + href
                 elif not href.startswith("http"):
                     href = url.rstrip("/") + "/" + href
+                if not _is_same_origin(href, url):
+                    continue
                 try:
                     css_resp = requests.get(href, timeout=10)
-                    if css_resp.status_code == 200:
+                    content_type = css_resp.headers.get("content-type", "")
+                    if css_resp.status_code == 200 and "text/" in content_type:
                         css_text = css_resp.text[:200_000]
                         for m in re.finditer(r'--([\w-]+)\s*:\s*([^;]+);', css_text):
                             extracted_css_vars[m.group(1)] = m.group(2).strip()
