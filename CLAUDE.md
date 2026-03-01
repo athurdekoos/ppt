@@ -8,8 +8,9 @@ This is an OpenTeams brand assets and presentation tooling repository containing
 
 - **OpenTeams_Brand_Guidelines_2025.pdf** — Official brand guidelines document (36 MB)
 - **Assets/** — Logo files in multiple formats and variants
-- **build_template.py** — Legacy PowerPoint template builder script
+- **build_template.py** — ⚠️ Legacy PowerPoint template builder script (use `openteams-pptx/` instead)
 - **openteams-pptx/** — Self-contained, installable PPTX generation skill (scripts, brand config, bundled logos)
+- **personal-showcase/** — HTML portfolio/showcase page generator with 3 themes (dark, light, glass)
 - **review/** — Brand compliance audit outputs (mock deck, report)
 
 ## Logo Organization

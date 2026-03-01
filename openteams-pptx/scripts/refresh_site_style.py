@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 Refresh website_cues in brand.json by crawling openteams.com.
 

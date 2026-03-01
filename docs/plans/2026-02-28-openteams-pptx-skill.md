@@ -1,5 +1,7 @@
 # OpenTeams PPTX Generator Skill — Implementation Plan
 
+**Status:** ✅ Completed (2026-02-28)
+
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
 **Goal:** Build a pi agent skill (`openteams-pptx`) that generates modern, on-brand PowerPoint presentations from natural-language prompts, using the OpenTeams 2025 Brand Guidelines, local logo assets, and website-derived visual cues.

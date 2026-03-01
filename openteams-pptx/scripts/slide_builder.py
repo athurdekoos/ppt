@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 SlideBuilder — high-level helpers for building branded slides.
 Extracted from slide_renderers.py for maintainability.

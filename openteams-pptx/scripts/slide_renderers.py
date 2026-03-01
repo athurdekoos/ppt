@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 Slide renderers — one function per slide type.
 Each renderer signature: render_*(sb: SlideBuilder, spec: dict) -> None

@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 Brand token loader and theme builder.
 Reads brand.json and produces runtime config objects.

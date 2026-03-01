@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 Core tests for the OpenTeams PPTX generator.
 Covers: spec validation, color utilities, and smoke test for all renderers.

@@ -42,23 +42,45 @@
 This repo is part of the **OpenTeams automation ecosystem** — a pipeline that turns raw GitHub data into polished, brand-compliant deliverables:
 
 ```
-┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│   Data Layer        │     │   Output Layer       │     │   Distribution      │
-│                     │     │                      │     │                     │
-│  automated-         │────▶│  ppt/                │────▶│  skill-packager/    │
-│  reporting-gql      │     │  openteams-pptx/     │     │  npx installer      │
-│                     │     │                      │     │                     │
-│  GitHub GraphQL     │     │  Brand assets        │     │  pi + Claude Code   │
-│  PR/issue reports   │     │  PPTX generator      │     │  agent skills       │
-│  qreport-desktop    │     │  Brand guidelines    │     │                     │
-└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
+                              ┌──────────────────────┐     ┌─────────────────────┐
+  (external data source)      │   Output Layer       │     │   Distribution      │
+                              │                      │     │                     │
+  GitHub GraphQL ────────────▶│  ppt/                │────▶│  skill-packager/    │
+  PR/issue reports            │  openteams-pptx/     │     │  npx installer      │
+                              │  personal-showcase/  │     │                     │
+                              │  Brand assets        │     │  pi + Claude Code   │
+                              │  Brand guidelines    │     │  agent skills       │
+                              └──────────────────────┘     └─────────────────────┘
 ```
 
-| Repo | Role | Link |
-|------|------|------|
-| **automated-reporting-gql** | Pulls PR/issue data from GitHub via GraphQL → markdown/PDF reports | [Quansight/automated-reporting-gql](https://github.com/Quansight/automated-reporting-gql) |
-| **ppt** ← _you are here_ | Brand assets + AI-powered PPTX generator | [athurdekoos/ppt](https://github.com/athurdekoos/ppt) |
+| Component | Role | Location |
+|-----------|------|----------|
+| **ppt** ← _you are here_ | Brand assets + AI-powered PPTX generator + showcase | [athurdekoos/ppt](https://github.com/athurdekoos/ppt) |
 | **skill-packager** | Scaffolds and packages agent skills for distribution | Bundled in `skill-packager/` |
+| **personal-showcase** | HTML portfolio page generator (3 themes) | Bundled in `personal-showcase/` |
+
+> **Upstream data:** PR/issue reports can be fed from any GitHub GraphQL data pipeline.
+
+---
+
+## 🚀 Quick Start
+
+**Prerequisites:** Python 3.8+, Node.js 16+ (only needed for the `npx` installer)
+
+```bash
+# Clone and install Python dependencies
+git clone https://github.com/athurdekoos/ppt.git && cd ppt
+pip install -r requirements.txt
+
+# Generate a demo deck
+python3 openteams-pptx/scripts/generate_deck.py --demo \
+  --brand openteams-pptx/references/brand.json --out demo.pptx
+
+# Or install as an agent skill (see Install section below)
+npx https://github.com/athurdekoos/ppt --pi
+```
+
+> **Note:** `build_template.py` at the repo root is a **legacy** script — use the `openteams-pptx/` skill instead.
 
 ---
 
@@ -94,6 +116,8 @@ See [`openteams-pptx/README.md`](openteams-pptx/README.md) for full usage, slide
 
 ### Install
 
+The `bin/install.mjs` script handles installation via npx — it checks Python 3, installs `python-pptx` if needed, and copies skill files to the right location.
+
 ```bash
 # As a pi skill
 npx https://github.com/athurdekoos/ppt --pi
@@ -101,8 +125,11 @@ npx https://github.com/athurdekoos/ppt --pi
 # As a Claude Code skill
 npx https://github.com/athurdekoos/ppt --claude
 
-# Manual CLI
-pip3 install python-pptx
+# Run with no flags to see help
+npx https://github.com/athurdekoos/ppt
+
+# Manual CLI (no npx needed)
+pip install -r requirements.txt
 python3 openteams-pptx/scripts/generate_deck.py --demo \
   --brand openteams-pptx/references/brand.json --out demo.pptx
 ```
@@ -133,6 +160,21 @@ python3 openteams-pptx/scripts/generate_deck.py --demo \
 | 🟢 Accent Green | `#3AD58E` | Secondary accent |
 
 Full guidelines: [`OpenTeams_Brand_Guidelines_2025.pdf`](OpenTeams_Brand_Guidelines_2025.pdf) (36 pages)
+
+---
+
+## 🌐 Personal Showcase
+
+> `personal-showcase/` — Generate a self-contained HTML portfolio page with OpenTeams branding.
+
+Three themes: **dark** (Night Navy), **light** (clean white), **glass** (frosted blur). No server needed — just open the `.html` file in a browser.
+
+```bash
+python3 personal-showcase/scripts/generate_showcase.py \
+  --profile profile.json --out showcase.html --theme dark
+```
+
+See [`personal-showcase/README.md`](personal-showcase/README.md) for full docs and profile JSON format.
 
 ---
 
@@ -190,15 +232,33 @@ ppt/
 │   ├── scripts/                           # Python source (6 modules, ~1700 LOC)
 │   └── tests/
 │
+├── personal-showcase/                     # HTML portfolio generator (3 themes)
+│   ├── README.md
+│   ├── SKILL.md
+│   ├── scripts/generate_showcase.py
+│   └── assets/
+│
 ├── skill-packager/                        # Skill scaffolding + packaging tool
 │   ├── README.md
 │   └── scripts/
 │
-├── review/                                # Brand compliance audit
+├── review/                                # Brand compliance audit outputs
 │   └── COMPLIANCE_REPORT.md
 │
-└── docs/plans/                            # Implementation plans
+└── docs/plans/                            # Historical implementation plans (completed)
 ```
+
+---
+
+## Generated Outputs
+
+The following files are **generated artifacts** (not source code):
+
+| Output | Generator | Notes |
+|--------|-----------|-------|
+| `*.pptx` files | `openteams-pptx/scripts/generate_deck.py` | Brand-compliant PowerPoint decks |
+| `showcase-*.html` files | `personal-showcase/scripts/generate_showcase.py` | Self-contained portfolio pages |
+| `review/COMPLIANCE_REPORT.md` | Brand audit process | Slide-by-slide compliance report |
 
 ---
 

@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 """
 Low-level PowerPoint shape/gradient/shadow helpers.
 Extracted from build_template.py Section 5.

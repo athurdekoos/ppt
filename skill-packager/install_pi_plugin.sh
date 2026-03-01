@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
 # install_pi_plugin.sh — Install the skill-packager skill for pi
 set -euo pipefail
 

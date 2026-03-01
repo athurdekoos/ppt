@@ -1,3 +1,8 @@
+# Authored by Amelia Thurdekoos
+# Email: ameliathurdekoos@gmail.com
+#
+# Any cares, concerns, compliments, or enhancements are always welcome!
+
       #!/usr/bin/env bash
       # install_claude_plugin.sh — Install the skill-packager skill for Claude Code
       set -euo pipefail
