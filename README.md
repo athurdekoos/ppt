@@ -1,24 +1,21 @@
 ```
-      ██████╗ ██████╗ ███████╗███╗   ██╗
-     ██╔═══██╗██╔══██╗██╔════╝████╗  ██║
-     ██║   ██║██████╔╝█████╗  ██╔██╗ ██║
-     ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║
-     ╚██████╔╝██║     ███████╗██║ ╚████║
-      ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝
- ████████╗███████╗ █████╗ ███╗   ███╗███████╗
- ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔════╝
-    ██║   █████╗  ███████║██╔████╔██║███████╗
-    ██║   ██╔══╝  ██╔══██║██║╚██╔╝██║╚════██║
-    ██║   ███████╗██║  ██║██║ ╚═╝ ██║███████║
-    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+     ██████╗ ██████╗ ████████╗
+     ██╔══██╗██╔══██╗╚══██╔══╝
+     ██████╔╝██████╔╝   ██║   
+     ██╔═══╝ ██╔═══╝    ██║   
+     ██║     ██║        ██║   
+     ╚═╝     ╚═╝        ╚═╝   
 
-        Brand  &  Presentation  Toolkit
-  ──────────────────────────────────────────
-
- ┌──────┐         ┌────────┐        ┌────────┐
- │ DATA │════════▶│ SLIDES │═══════▶│ SKILLS │
- └──────┘         └────────┘        └────────┘
+Brand & Presentation Toolkit
+─────────────────────────
 ```
+
+<p align="center">
+  <a href="https://discord.gg/YmsT7FFnW8"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
+  <a href="https://github.com/athurdekoos/ppt"><img src="https://img.shields.io/badge/GitHub-022791?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+  <a href="https://openteams.com"><img src="https://img.shields.io/badge/OpenTeams-4D75FE?style=flat-square&logo=data:image/svg+xml;base64,&logoColor=white" alt="OpenTeams"/></a>
+  <a href="https://www.linkedin.com/in/amelia-thurdekoos-26450b86/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+</p>
 
 <p align="center">
   <strong>Data → Slides → Skills</strong> — the OpenTeams automation pipeline
@@ -26,13 +23,6 @@
 
 <p align="center">
   <img src="docs/slide-showcase.gif" alt="Slide type showcase" width="720">
-</p>
-
-<p align="center">
-  <a href="https://discord.gg/YmsT7FFnW8"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
-  <a href="https://github.com/athurdekoos"><img src="https://img.shields.io/badge/GitHub-022791?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
-  <a href="https://openteams.com"><img src="https://img.shields.io/badge/OpenTeams-4D75FE?style=flat-square&logo=data:image/svg+xml;base64,&logoColor=white" alt="OpenTeams"/></a>
-  <a href="https://www.linkedin.com/in/amelia-thurdekoos-26450b86/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 </p>
 
 ---
